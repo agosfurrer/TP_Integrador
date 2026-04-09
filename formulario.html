@@ -7,28 +7,26 @@
 </head>
 <body>
     <header>
-        <ul>
-            <li><a href="Index.html">Volver al inicio</a></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <a href="Index.html"><i>꧁ Volver al inicio  ꧂</i></a>
         
     </header>
     <main>
+        <article>
+            <h1><i>¡Compartinos lo que pensás!</i></h1>
+        </article>
         <form action="">
     <fieldset >
-        <legend >Datos personales</legend>
+        <legend ><i>Datos personales</i></legend>
         <br>
-        <label for="Nombre" >Nombre:</label>
+        <label for="Nombre" ><i>Nombre:</i></label>
         <input type="text" placeholder="Ingrese nombre" required >
         <br> <br>
-        <label for="">Apellido:</label>
+        <label for=""><i>Apellido:</i></label>
         <input type="text" placeholder="Ingrese apellido" >
         <br><br>
-        <label for="">Email</label>
-        <br>
+        <label for=""><i>Celular:</i></label>
+        <input type=" "  pattern="[0-9]+" title="Solo números" placeholder="Ingrese número de celular" required> <br><br>
+        <label for=""><i>Email:</i></label>
         <input type="email" placeholder="Ingrese email" required >
         <br><br>
         
@@ -36,35 +34,33 @@
  <br>
     <fieldset >
         <br>
-        <legend>Preferencias</legend>
-        <label for="preferencias">¿Te gustó la página?</label>
-        <br>
-        <select name="elegir" id="">
-            <option value="Si">Si</option>
-            <option value="No">No</option>
-            <option value="Puede mejorar">Puede mejorar</option>
-            <option value="Me encantó">Me encantó</option>
-            <option value="No me gustó nada">No me gustó nada</option>
-        </select> <br> <br>
+       
+        <legend><i>Preferencias</i></legend>
 
-        <label for="parte">¿Qué parte te gustó más?</label> <br>
-        <input type="radio" name="parte" id=""> Online <br>
-        <input type="radio" name="parte"> Presencial <br><br>
-        
-        <label for="">Intereses:</label> <br>
-        <input type="checkbox" name="" id=""> Diseño <br>
-        <input type="checkbox" name="" id=""> Programación <br>
-        <input type="checkbox"> Base de Datos <br>
+        <label for="parte"><i>¿Te gustó la página?</i></label> <br><br>
+        <input type="radio" name="parte" id=""> Si <br>
+        <input type="radio" name="parte"> No <br>
+        <input type="radio" name="parte"> Puede mejorar<br>
+        <input type="radio" name="parte"> Me encantó<br> 
+        <hr>
+        <label for=""><i>¿Qué parte te gustó más?</i></label> <br><br>
+        <input type="checkbox" name="" id=""> La publicidad <br>
+        <input type="checkbox" name="" id=""> Los tips <br>
+        <input type="checkbox"> Las aplicaciones<br>
+        <input type="checkbox"> Las recomendaciones<br>
+        <input type="checkbox"> Los consejos para estudiar<br>
     </fieldset>
     <br>
     <fieldset >
-        <legend >Comentarios</legend>
-        <textarea name="" id="" rows="3" cols="7" maxlength="171"
-         placeholder="Escriba aquí"> </textarea> <br> <br>
+        <legend ><i>Opiniones</i></legend>
+        <textarea name="" id="" rows="7" cols="14" maxlength="171"
+         placeholder="Escriba aquí"> </textarea> 
+         <br> <br>
+
         <input type="submit" value="Enviar" >
         <input type="reset" value="Limpiar">
     </fieldset>
-   </form>
+        </form>
         
     </main>
 </body>
