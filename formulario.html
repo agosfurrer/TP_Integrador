@@ -6,63 +6,85 @@
     <title>Formulario de contacto</title>
     <link rel="shortcut icon" href="imagenes/poblacion.png" type="image/x-icon">
 </head>
+
 <body>
     <header>
-        <a href="Index.html"><i>꧁ Volver al inicio  ꧂</i></a>
-        
+        <br>
+        <a href="Index.html"><i>꧁ Volver al inicio ꧂</i></a>
+        <br>
     </header>
+
     <main>
         <article>
             <h1><i>¡Compartinos lo que pensás!</i></h1>
         </article>
+
         <form action="">
-    <fieldset >
-        <legend ><i>Datos personales</i></legend>
-        <br>
-        <label for="Nombre" ><i>Nombre:</i></label>
-        <input type="text" placeholder="Ingrese nombre" required >
-        <br> <br>
-        <label for=""><i>Apellido:</i></label>
-        <input type="text" placeholder="Ingrese apellido" >
-        <br><br>
-        <label for=""><i>Celular:</i></label>
-        <input type=" "  pattern="[0-9]+" title="Solo números" placeholder="Ingrese número de celular" required> <br><br>
-        <label for=""><i>Email:</i></label>
-        <input type="email" placeholder="Ingrese email" required >
-        <br><br>
-        
-    </fieldset>
- <br>
-    <fieldset >
-        <br>
-       
-        <legend><i>Preferencias</i></legend>
+            <fieldset>
+                <legend><i>Datos personales</i></legend>
+                <br>
+                <label for="nombre"><i>Nombre:</i></label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese nombre" required>
+                <br><br>
 
-        <label for="parte"><i>¿Te gustó la página?</i></label> <br><br>
-        <input type="radio" name="parte" id=""> Si <br>
-        <input type="radio" name="parte"> No <br>
-        <input type="radio" name="parte"> Puede mejorar<br>
-        <input type="radio" name="parte"> Me encantó<br> 
-        <hr>
-        <label for=""><i>¿Qué parte te gustó más?</i></label> <br><br>
-        <input type="checkbox" name="" id=""> La publicidad <br>
-        <input type="checkbox" name="" id=""> Los tips <br>
-        <input type="checkbox"> Las aplicaciones<br>
-        <input type="checkbox"> Las recomendaciones<br>
-        <input type="checkbox"> Los consejos para estudiar<br>
-    </fieldset>
-    <br>
-    <fieldset >
-        <legend ><i>Opiniones</i></legend>
-        <textarea name="" id="" rows="7" cols="14" maxlength="171"
-         placeholder="Escriba aquí"> </textarea> 
-         <br> <br>
+                <label for="apellido"><i>Apellido:</i></label>
+                <input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido">
+                <br><br>
 
-        <input type="submit" value="Enviar" >
-        <input type="reset" value="Limpiar">
-    </fieldset>
+                <label for="celular"><i>Celular:</i></label>
+                <input type="tel" id="celular" name="celular" pattern="[0-9]+" title="Solo números" placeholder="Ingrese número de celular" required>
+                <br><br>
+
+                <label for="email"><i>Email:</i></label>
+                <input type="email" id="email" name="email" placeholder="Ingrese email" required>
+                <br><br>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend><i>Preferencias</i></legend>
+                <br>
+                <label><i>¿Te gustó la página?</i></label> 
+                <br><br>
+                <input type="radio" name="valoracion" id="v1" value="si"> <label for="v1">Si</label> <br>
+                <input type="radio" name="valoracion" id="v2" value="no"> <label for="v2">No</label> <br>
+                <input type="radio" name="valoracion" id="v3" value="mejorar"> <label for="v3">Puede mejorar</label> <br>
+                <input type="radio" name="valoracion" id="v4" value="encanto"> <label for="v4">Me encantó</label> <br> 
+                
+                <hr>
+                
+                <label><i>¿Qué parte te gustó más?</i></label> 
+                <br><br>
+                <input type="checkbox" name="gusto" id="p1" value="publicidad"> <label for="p1">La publicidad</label> <br>
+                <input type="checkbox" name="gusto" id="p2" value="tips"> <label for="p2">Los tips</label> <br>
+                <input type="checkbox" name="gusto" id="p3" value="apps"> <label for="p3">Las aplicaciones</label> <br>
+                <input type="checkbox" name="gusto" id="p4" value="recom"> <label for="p4">Las recomendaciones</label> <br>
+                <input type="checkbox" name="gusto" id="p5" value="consejos"> <label for="p5">Los consejos para estudiar</label> <br>
+            </fieldset>
+
+            <br>
+
+            <fieldset>
+                <legend><i>Opiniones</i></legend>
+                <br>
+                <textarea name="comentarios" id="comentarios" rows="7" cols="40" maxlength="171" placeholder="Escriba aquí sus consejos o sugerencias..."></textarea> 
+                <br> <br>
+
+                <input type="submit" value="Enviar">
+                <input type="reset" value="Limpiar">
+                <br><br>
+
+                <hr>
+                <h3><i>Gracias por sumar tu experiencia a esta guía de supervivencia. ¡Éxitos con el estudio! — 🎧ྀི</i></h3>
+            </fieldset>
         </form>
-        
     </main>
+
+    <footer>
+        <br>
+        <p><b><i>Hecho por Furrer Agostina - 2026</i></b></p>
+    </footer>
 </body>
+
 </html>
