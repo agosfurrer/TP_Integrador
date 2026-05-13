@@ -1,4 +1,10 @@
 body {
     /*imagen de fondo*/
+    background-image: url(imagenes/fondo.gif);
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
     font-family: 'Array', sans-serif;
 }

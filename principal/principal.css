@@ -1,0 +1,46 @@
+body {
+    
+    background-image: url(../imagenes/compu.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+}
+
+.bt {
+    margin: 60px 610px;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, sans-serif;
+    font-size: 11px;
+    padding: 3px 16px;
+    min-width: 75px;
+    height: 23px;
+    background: #c0c0c0;
+    color: #424242;
+    border: none;
+    outline: 2px solid;
+    outline-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow:
+    inset 1px 1px 0px #dfdfdf,
+    inset -1px -1px 0px #808080;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    text-align: center;
+}
+
+.bt:hover {
+    box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #dfdfdf;
+    outline-color: #808080 #ffffff #ffffff #808080;
+}
+
+.ini h1 {
+    text-align: center;
+    font-size: 20px;
+    color: aqua;
+    text-shadow: #0b9460;
+    margin: 90px 610px;
+
+}
