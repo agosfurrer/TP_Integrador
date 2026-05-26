@@ -1,149 +1,208 @@
-
-/*Fondo y tipografía*/
-body {
- background-image: url(../imagenes/compu.gif);
- background-size: contain;
- background-position: center;
- background-repeat: no-repeat;
- background-attachment: fixed;
- font-family: 'Array', sans-serif;
- margin: 0;
- height: 100vh;
- width: 100vw;
- overflow-x: hidden;
- position: relative;
+@font-face {
+  font-family: 'MiFuente';
+  src: url(../y2k_brutalism/Y2K\ Brutalism\ Typeface.otf) format('truetype');
 }
 
-/*Título - centrado exacto dentro de la pantalla de la compu*/
+:root {
+  --font-array: 'Array', sans-serif;
+}
+
+/* --- MODIFICACIÓN: Body ahora es un contenedor flexible para centrar la compu --- */
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #ffffff; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- NUEVO: Este contenedor imita el comportamiento de la imagen 'contain' --- */
+.monitor-area {
+  position: relative;
+  width: 100vmin;  /* Se adapta al lado más corto de la pantalla */
+  height: 100vmin; /* Mantiene la proporción 1:1 para sincronizar con el fondo */
+  background-image: url(../imagenes/compu.gif);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'MiFuente', sans-serif;
+}
+
+/* --- Título centrado relativo al monitor-area --- */
 .ini {
- position: absolute;
- top: 28%;
- left: 49%;
- transform: translate(-50%, -50%);
- text-align: center;
- width: 340px;
- max-width: 90vw;
- z-index: 10; /* Asegura que el botón esté arriba de todo */
+  position: absolute;
+  top: 28%;
+  left: 40%; 
+  transform: translate(-50%, -50%);
+  width: 60%; /* es % del monitor, no de la ventana */
+  z-index: 10;
+  /*habilitar el gap*/
+  display: flex;
+  flex-direction: column;   /* Ponemos los dos títulos y el botón uno abajo del otro */
+  align-items: center;       /* Centra los textos y el botón en el eje horizontal */
+  text-align: center;        /* Mantiene el texto alineado al centro */
+  gap: 20px;
 }
 
 .ini h1 {
- font-size: 20px;
- color: rgb(1, 17, 17);
- text-shadow: 0 2px 4px #0b9460;
- margin: 0 0 20px 0;
+  font-size: 3vmin; /* Escalado fluido basado en el monitor */
+  color: rgb(230, 238, 255);
+  text-shadow: 0 0.2vmin 0.4vmin #04040c;
+  margin: 0 0vmin 0vmin 15vmin;
 }
 
 .ini h2 {
- font-size: 10px;
- color: rgb(1, 15, 15);
- text-shadow: 0 2px 4px #0b9460;
- margin: 0 0 30px 0;
+  font-size: 2vmin;
+  color: rgb(13, 3, 61);
+  text-shadow: 0 0.2vmin 0.4vmin #f3f3f3;
+  margin: 0 0vmin 0vmin 15vmin;
+  line-height: 1.2;
+  font-family: var(--font-array);
 }
 
-/*Botón*/
+/*Botón con efecto de presionado (hover)*/
 .bt {
- font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, sans-serif;
- font-size: 11px;
- padding: 3px 16px;
- min-width: 75px;
- height: 23px;
- background: #c0c0c0;
- color: #424242;
- border: none;
- outline: 2px solid;
- outline-color: #ffffff #808080 #808080 #ffffff;
- box-shadow:
- inset 1px 1px 0px #dfdfdf,
- inset -1px -1px 0px #808080;
- cursor: pointer;
- user-select: none;
- line-height: 1;
- text-align: center;
- display: inline-block;
+  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, sans-serif;
+  font-size: 2vmin;
+  padding: 0.5vmin 1.5vmin;
+  min-width: 9vmin;
+  height: auto;
+  background: #c0c0c0;
+  color: #424242;
+  border: none;
+
+  /* outline para borde 3D retro */
+  outline: 0.2vmin solid;
+  outline-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow:
+    inset 1px 1px 0px #dfdfdf,
+    inset -1px -1px 0px #808080;
+  cursor: pointer;
+  user-select: none;
+  line-height: 1;
+  text-align: center;
+  display: inline-block;
+  margin: 0 2vmin 0vmin 15vmin;
 }
 
+.bt a {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+    
+}
+
+/*invierte las sombras para que parezca que se aprieta */
 .bt:hover {
- box-shadow:
- inset 1px 1px 0px #808080,
- inset -1px -1px 0px #dfdfdf;
- outline-color: #808080 #ffffff #ffffff #808080;
+  box-shadow:
+    inset 1px 1px 0px #808080,
+    inset -1px -1px 0px #dfdfdf;
+  outline-color: #808080 #ffffff #ffffff #808080;
 }
-
-/* Contenedor principal de imágenes */
+/* --- MODIFICACIÓN: Contenedor de imágenes ahora ocupa todo el monitor-area --- */
 .img {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-/* Cada grupo de imágenes */
-.centro,
-.izq,
-.der {
- position: absolute;
- display: flex;
+.centro, .izq, .der, .centro-der, .centro-iz {
+  position: absolute;
+  display: flex;
 }
 
-/* Grupo del centro - abajo */
+/* --- POSICIONAMIENTO DE GRUPOS (Usando % para que no se muevan) --- */
+
 .centro {
- bottom: 44%;
- left: 45%;
- transform: translateX(-50%);
- align-items: center;
- flex-wrap: nowrap;
- flex-direction: row;
- gap: 80px;
+  bottom: 43%; /* Ajustado para el borde inferior del monitor */
+  left: 33%;
+  transform: translateX(-50%);
+  gap: 100%; 
+  z-index: 6;
 }
 
-/* Grupo izquierdo - costado izquierdo */
+.centro-der {
+  right: 23%; 
+  top: 10%;
+  flex-direction: column;
+  gap: 7vmin;
+  z-index: 5;
+}
+
+.centro-iz {
+  left: 13%;
+  top: 15%;
+  flex-direction: column;
+  gap: 9vmin;
+  z-index: 60;/*para que el efecto se mantenga*/
+}
+
 .izq {
- top: 80%;
- left: 0%;
- transform: translateY(-60%);
- align-items: flex-start; 
+  bottom: 15%;
+  left: -30%;
+  z-index: 5;
 }
 
-/* Grupo derecho - costado derecho */
 .der {
- top: 50%;
- right: 5%;
- transform: translateY(-50%);
- align-items: flex-end;
+  bottom: 10%;
+  right: -30%;
+  width: 35%;
+  height: 25%;
+  display: block;
+  z-index: 1;
 }
 
-/* Estilo de todas las imágenes */
+/* ESTILOS DE IMÁGENES */
 .img img {
- height: auto;
- border-radius: 20%;
- display: block;
+  height: auto;
+  position: relative;
+  transition: transform 0.4s ease;
 }
 
-/*Tamaño individual de cada imagen*/
-#gato{ 
-    width: 66px; 
-}
-#gato:hover {
-    transform: rotate(10deg); 
-    transition: 0.3s; 
-}
+#gato { width: 10vmin; transform: rotate(30deg); }
+#cool { width: 10vmin; transform: rotate(27deg); }
 
-#cool { 
-    width: 50px; 
-}
-#cool:hover {
-    transform: rotate(-10deg);
-    transition: 0.4s;
-}
 #mate { 
-    width: 190px; 
-    margin-bottom: 5px;
+  width: 26vmin; 
+  left: -40%;
+  bottom: -17vmin;
+  transform-origin: bottom right; 
+  transition: transform 0.5s ease-out; 
 }
-#pava { 
-    width: 280px;
-    display: block;
-}
+/*mate se cae, ver si hacerlo*/
+
+#pava { width: 45vmin; left: -30%; bottom: -15vmin;}
+
 #gato-der { 
-    width: 180px; 
+  width: 60vmin; 
+  position: absolute;
+  right: -40%;           
+  bottom: -17vmin; /* Pegado a la esquina del contenedor .der */
+  z-index: 3;         
 }
+
+#lib {
+  width: 97vmin;       
+  position: absolute; 
+  left: -118%;        
+  bottom: -98%;
+  z-index: 2;         
+}
+
+/* Stickers pequeños */
+#al { width: 7vmin; transform: rotate(-22deg); left: 25%; top: 10%; }
+#ju { width: 7vmin; transform: rotate(-20deg); left: 33%; }
+#gus { width: 8vmin; transform: rotate(-44deg); left: 7%; top: 5vmin; }
+#cora { width: 10vmin; transform: rotate(-20deg); left: 10%;}
+#perro { width: 7vmin;  left: 19%;}
+
+/* Efectos Hover */
+#gato:hover, #cool:hover, #al:hover, #ju:hover, #gus:hover, #cora:hover {
+  transform: scale(1.1);
+}
+#perro:hover { transform: translateY(-0.5vmin); }
