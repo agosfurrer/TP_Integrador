@@ -1,9 +1,9 @@
 /* 1. Fuentes, variables*/
 :root {
-    --win-gray: #c0c0c0;
-    --win-white: #ffffff;
-    --win-shadow: #808080;
-    --win-blue: #000080;
+    --win-gris: #c0c0c0;
+    --win-blan: #ffffff;
+    --win-somb: #808080;
+    --win-azul: #000080;
     --font-array: 'Array', sans-serif; /*tipografía original */
 }
 
@@ -44,9 +44,9 @@ body {
     transform: translateX(-50%); /* Estos dos comandos lo centran horizontalmente */
     width: 56vw;
     max-width: 1250px;
-    background: var(--win-gray);
+    background: var(--win-gris);
     border: 2px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     padding: 6px 6px;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 1000; /* Asegura que pase por encima de cualquier otra ventana */
@@ -62,9 +62,9 @@ body {
 .btn-nav {
     display: inline-block;
     padding: 6px 14px;
-    background: var(--win-gray);
+    background: var(--win-gris);
     border: 2px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     color: #000000 !important; /* Fuerza el color negro para evitar el azul de links */
     text-decoration: none;
     font-size: 10px;
@@ -74,7 +74,7 @@ body {
 
 /* Efecto click en los botones del menú */
 .btn-nav:active {
-    border-color: var(--win-shadow) var(--win-white) var(--win-white) var(--win-shadow);
+    border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
     padding: 7px 13px 5px 15px;
 }
 
@@ -97,55 +97,25 @@ body {
     flex-shrink: 0;
 }
 
-/*tip arriba a la izquierda*/
-.columna-lateral:first-of-type .mini-ventana:nth-child(1) {
-    top: 80px;
-    left: 20px;
-}
-/*publi medio centro-izquierda*/
-.columna-lateral:first-of-type .mini-ventana:nth-child(2) {
-    top: 260px;
-    left: 45px; /* Un poquito corrida a la derecha para dar efecto de desorden */
-    z-index: 51; /* Pasa ligeramente por encima de la anterior */
-}
-/*2do tip abajo-izq*/
-.columna-lateral:first-of-type .mini-ventana:nth-child(3) {
-    bottom: 60px;
-    left: 20px;
-}
-/*video-arriba a la derecha*/
-.columna-lateral:last-of-type .ventana-video {
-    top: 80px;
-    right: 20px;
-    width: 240px; /* Un poquito más ancho para el video */
-}
-/*3tip centro-der*/
-.columna-lateral:last-of-type .mini-ventana:nth-child(2) {
-    top: 310px;
-    right: 40px;
-}
-/*2da publi abajo-der*/
-.columna-lateral:last-of-type .mini-ventana:nth-child(3) {
-    bottom: 60px;
-    right: 20px;
-}
-
-
 .contenedor-central {
-    flex-grow: 1;
-    max-width: 760px;
+    position: fixed;
+    top: 47%;               
+    left: 50%;             
+    transform: translate(-50%, -50%); /* centrado  */
     width: 100%;
-    height: 100%;
+    max-width: 780px;       /* Ancho de la ventana de la guía */
+    height: 78vh;           /* Alto de la ventana (70% de la pantalla) */
+    z-index: 10;            /* Queda en una capa intermedia, bajo el menú */
 }
+
 
 /* 3. ventana principal (Página real)*/
 .ventana-principal {
-    background: var(--win-gray);
+    background: var(--win-gris);
     width: 100%;
-    height: 100%; /* Adapta su alto a la fila */
-    max-height: 580px;
+    height: 100%;           /* Ocupa el 100% del alto que le dimos al contenedor */
     border: 2px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
     display: flex;
     flex-direction: column;
@@ -153,7 +123,7 @@ body {
 }
 
 .barra-titulo {
-    background: linear-gradient(90deg, var(--win-blue), #1084d0);
+    background: linear-gradient(90deg, var(--win-azul), #1084d0);
     color: white;
     padding: 4px 10px;
     display: flex;
@@ -163,10 +133,10 @@ body {
 }
 
 .btn-win {
-    background: var(--win-gray);
+    background: var(--win-gris);
     color: black;
     border: 1px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     width: 18px; height: 18px;
     text-align: center; line-height: 14px;
     font-size: 11px;
@@ -178,7 +148,7 @@ body {
     background: white;
     flex-grow: 1;
     margin: 2px;
-    border: 2px solid var(--win-shadow);
+    border: 2px solid var(--win-somb);
     overflow-y: scroll; /* Scroll web estándar para navegar */
     padding: 25px;
 }
@@ -190,20 +160,20 @@ body {
 
 .separador-retro {
     border: 0;
-    border-top: 2px dashed var(--win-shadow);
+    border-top: 2px dashed var(--win-somb);
     margin: 20px 0;
 }
 
 /* 4. mini ventanas a los costados*/
-.mini-ventana {
-    position: fixed; /* Flotan en la pantalla independientemente del scroll */
-    background: var(--win-gray);
-    width: 190px;
-    border: 2px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+ .mini-ventana {
+    position: fixed; /* Se clavan en la pantalla y no se mueven con el scroll */
+    background: var(--win-gris);
+    width: 190px;    /* Ancho estándar */
+    border: 2.5px solid;
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
     padding: 2px;
-    z-index: 50; /* Por debajo del menú pero por encima del fondo */
+    z-index: 50;     /* Quedan flotando sobre el fondo de pantalla */
 }
 
 .barra-titulo-mini {
@@ -216,34 +186,30 @@ body {
     font-weight: bold;
 }
 
-.btn-win-mini {
-    background: var(--win-gray);
+.btn-win-mini { /*equis X*/
+    background: var(--win-gris);
     color: black;
     border: 1px solid;
-    border-color: var(--win-white) var(--win-shadow) var(--win-shadow) var(--win-white);
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     width: 14px; height: 14px;
-    font-size: 8px; text-align: center; line-height: 11px;
+    font-size: 8px; 
+    text-align: center; 
+    line-height: 11px;
+    cursor: pointer;
 }
 
 .contenido-mini {
-    background: #ffffe1; /* Post-it amarillo clásico */
-    border: 1px solid var(--win-shadow);
-    padding: 10px;
-    font-size: 13px;
+    background: #ffffe1;
+    border: 1px solid var(--win-somb);
+    padding: 5px;
 }
 
 .contenido-mini-ad {
-    background: #f1f1f1;
-    border: 1px solid var(--win-shadow);
-    padding: 8px;
-    text-align: center;
-    font-size: 11px;
+    background: #ecebeb;
+    border: 1px solid var(--win-somb);
 }
 
-.contenido-mini-ad img {
-    margin-top: 4px;
-    border: 1px solid #000;
-}
+
 
 /* 5. ventana de video*/
 .ventana-video {
@@ -256,50 +222,162 @@ body {
 
 .contenido-mini-video {
     background: #000000;
-    border: 1px solid var(--win-shadow);
+    border: 1px solid var(--win-somb);
     padding: 2px;
 }
 
 .reproductor-controles {
-    background: var(--win-gray);
+    background: var(--win-gris);
     color: black;
     padding: 4px;
     font-size: 11px;
     text-align: left;
-    border-top: 2px solid var(--win-white);
+    border-top: 2px solid var(--win-blan);
     margin-top: 2px;
 }
 
 /* 6. contenidos y textos*/
-h1 { font-size: 1.5rem; color: var(--win-blue); margin-bottom: 8px; }
-h2 { font-size: 1.2rem; margin-bottom: 12px; color: #111; border-bottom: 1px solid #eee; padding-bottom: 4px; }
-h3 { margin: 12px 0 6px 0; font-size: 13px; }
-p { line-height: 1.4; margin-bottom: 10px; font-size: 14px; }
-ul, ol { margin-left: 20px; margin-bottom: 12px; font-size: 14px; }
-li { margin-bottom: 4px; }
+h1 { 
+    font-size: 1.5rem; 
+    color: var(--win-azul); 
+    margin-bottom: 8px; 
+}
+h2 { 
+    font-size: 1.2rem; 
+    margin-bottom: 12px; 
+    color: #111;
+    border-top: 1.5px solid rgb(212, 212, 212);
+    border-bottom: 1.3px solid rgb(214, 213, 213); 
+    padding-bottom: 4px;
+ }
 
-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 12px; }
-th { background: var(--win-gray); padding: 6px; border: 1px solid var(--win-shadow); font-weight: bold; }
-td { padding: 6px; border: 1px solid #ccc; }
-.imagen { text-align: center; margin: 15px 0; }
+h3 { 
+    margin: 12px 0 6px 0; 
+    font-size: 13px; 
+}
+p { 
+    line-height: 1.4; 
+    margin-bottom: 10px; 
+    font-size: 14px; 
+}
+ul, ol { 
+    margin-left: 20px; 
+    margin-bottom: 12px; 
+    font-size: 14px; 
+}
+li { 
+    margin-bottom: 4px; 
+}
 
-.link-volver { color: var(--win-blue); text-decoration: none; font-size: 12px; display: inline-block; margin-top: 5px; }
-.win-link { color: #b00000; font-weight: bold; }
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 15px 0; 
+    font-size: 12px; 
+}
+
+th { 
+    background: var(--win-gris); 
+    padding: 6px; 
+    border: 1px solid var(--win-somb); 
+    font-weight: bold; 
+}
+td { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+}
+.imagen { 
+    text-align: center; 
+    margin: 15px 0; 
+}
+
+.link-volver { 
+    color: var(--win-azul); 
+    text-decoration: none; 
+    font-size: 12px; 
+    display: inline-block; 
+    margin-top: 5px; 
+}
+.win-link { 
+    color: #b00000; 
+    font-weight: bold;
+}
+
+#link-pag {
+    color: #b00000;
+    font-weight: bold;
+    font-size: 11px;
+    text-align: center;
+}
 
 /* 7. footer */
 footer {
     position: fixed;
     bottom: 0; width: 100%;
-    background: var(--win-gray);
-    border-top: 2px solid var(--win-white);
+    background: var(--win-gris);
+    border-top: 2px solid var(--win-blan);
     padding: 5px 55px;
     z-index: 500;
 }
+.copyright { 
+    text-align: center; 
+    font-size: 17px; 
+    color: rgb(rgb(43, 44, 65)); 
+    margin-top: 2px; 
+}
+/*titulo de los tips*/
+.contenido-mini h3 {
+    text-align: center;
+}
+/*texto de los tips*/
+.contenido-mini p {
+    text-align: left;
+}
 
-.copyright { text-align: center; font-size: 19px; color: var(--win-shadow); margin-top: 2px; }
+/* --- Ventanas del lado Izq --- */
+
+.v-video {
+    top: 400px;       
+    left: 58px;      
+    width: 240px;    
+}
+
+.v-ergo {
+    top: 270px;      
+    left: 120px;     
+    z-index: 60;
+}
+
+.v-pub1 {
+    bottom: 330px;    /* Distancia desde el piso de la pantalla (arriba de la barra de tareas) */
+    left: 85px;
+}
+
+
+/* --- Ventanas del lado Derecho --- */
+
+.v-vista {
+    top: 30px;       
+    right: 115px;     
+}
+
+.v-pub2 {
+    top: 230px;      
+    right: 100px;     
+}
+
+.v-diseno {
+    bottom: 70px;    
+    right: 28px;
+}
+
+.v-link {
+    bottom: 300px;
+}
+
 
 /*8. responsive */
 @media (max-width: 1150px) {
-    .columna-lateral { display: none !important; } /* Cierra las ventanas secundarias en pantallas reducidas para mantener legible la principal */
+    .columna-lateral { display: none !important; } /* Cierra las ventanas secundarias priorizando la principal */
     .barra-navegacion-superior { width: 95vw; }
 }
