@@ -1,0 +1,185 @@
+:root {
+    --gris-windows: #c0c0c0;
+    --azul-windows: #000080;
+    --sombra-windows: #808080;
+    --blanco-windows: #ffffff;
+    --texto-color: #000000;
+     --font-array: 'Array', sans-serif;
+}
+
+/* Base del cuerpo*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-array);
+    background-image: url(../imagenes/fondo.gif); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--texto-color);
+    overflow: hidden;
+}
+
+/* ventana central*/
+.contenedor-central {
+    position: fixed;
+    top: 35px; 
+    left: 50%;              
+    transform: translateX(-50%); 
+    width: 92vw;
+    max-width: 740px;       
+    height: calc(100vh - 75px); 
+    background: var(--gris-windows);
+    border: 2px solid;
+    border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows);
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
+    z-index: 10;            
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra azul superior */
+.barra-titulo-ventana {
+    background: var(--azul-windows);
+    color: white;
+    padding: 4px 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.botones-ventana {
+    display: flex;
+    gap: 3px;
+}
+
+.btn-mini-win {
+    background: var(--gris-windows);
+    border: 1px solid;
+    border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows);
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+    width: 16px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.cuerpo-ventana {
+    background: var(--blanco-windows);
+    margin: 4px;
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto; 
+    border: 2px solid;
+    border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows);
+}
+
+/*volver a la guia*/
+.contenedor-regreso {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.enlace-volver {
+    color: var(--azul-windows);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.enlace-volver:hover {
+    text-decoration: underline; /* Se subraya al pasar el mouse*/
+    color: #0000ff;
+}
+
+/* Diseño interno del form */
+h1 {
+    font-size: 22px;
+    color: var(--azul-windows);
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.grupo-formulario {
+    border: 2px solid var(--gris-windows);
+    padding: 12px;
+    background: #fafafa;
+}
+
+.grupo-formulario legend {
+    font-weight: bold;
+    background: var(--blanco-windows);
+    padding: 0 6px;
+}
+
+/* Campos de texto estilo clásico */
+.entrada-texto, .area-comentario {
+    width: 95%;
+    max-width: 400px;
+    border: 2px solid;
+    border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows);
+    padding: 4px;
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+.area-comentario {
+    max-width: 100%;
+    resize: none;
+}
+
+.opcion-seleccion {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.linea-separadora {
+    border: none;
+    border-top: 1px dashed var(--sombra-windows);
+    margin: 15px 0;
+}
+
+/* Botones de acción inferiores */
+.contenedor-botones-form {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-formulario {
+    background: var(--gris-windows);
+    border: 2px solid;
+    border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows);
+    padding: 6px 15px;
+    font-family: 'Array', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-formulario:active {
+    border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows);
+}
+
+.pie-ventana {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: var(--sombra-windows);
+}
+
+/*Responsive*/
+@media (max-width: 600px) { 
+    .contenedor-central {
+        width: 96vw;
+        top: 15px;
+        height: calc(100vh - 30px);
+    }
+}

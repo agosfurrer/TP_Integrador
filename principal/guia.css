@@ -7,18 +7,15 @@
     --font-array: 'Array', sans-serif; /*tipografía original */
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 
 body {
-    background-image: url(imagenes/fondo.gif);
+    background-image: url(../imagenes/fondo.gif);
     background-size: cover;
     background-position: center;
-    /*background-attachment: fixed;*/
-    height: 10vh;
+    background-attachment: fixed;
+    min-height: 100vh; 
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -27,10 +24,11 @@ body {
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
 }
 
+
 /* 2. Distribucion escritorio windows*/
 .escritorio {
     width: 100vw;
-    height: calc(200vh - 640px); /* Deja espacio exacto para la barra de tareas */
+    height: calc(200vh - 640px); 
     position: relative;
     padding: 52px 40px 4px ;/*70px*/
     box-sizing: border-box;
@@ -39,53 +37,64 @@ body {
 /* Barra de nav superior (forzada para visibilidad completa) */
 .barra-navegacion-superior {
     position: fixed; /* Se queda clavado en la pantalla */
-    top: 8px;       /* Separación del techo del monitor */
-    left: 49%;
-    transform: translateX(-50%); /* Estos dos comandos lo centran horizontalmente */
-    width: 56vw;
-    max-width: 1250px;
+    top: 8px;       /* Separación del monitor */
+    left: 50%;
+    transform: translateX(-50%); 
+    width: 95vw;
+    max-width: 740px;
     background: var(--win-gris);
     border: 2px solid;
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
-    padding: 6px 6px;
+    padding: 4px;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 1000; /* Asegura que pase por encima de cualquier otra ventana */
+     overflow: hidden;
 }
+
+
+
 
 .nav-contenido {
     display: flex;
-    justify-content: center;
-    gap: 3px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .btn-nav {
-    display: inline-block;
-    padding: 6px 14px;
+    flex-grow: 1;      /* Hace que todos los botones midan lo mismo y se repartan el espacio */
+    flex-shrink: 1;    /* Les da permiso obligatorio para encogerse */
+    text-align: center;
+    white-space: nowrap; 
     background: var(--win-gris);
     border: 2px solid;
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
-    color: #000000 !important; /* Fuerza el color negro para evitar el azul de links */
+    color: #000000 !important; 
     text-decoration: none;
-    font-size: 10px;
+    font-size: 10px;         
+    padding: 4px 2px;   
     font-weight: bold;
-    text-align: center;
 }
+
+
+
 
 /* Efecto click en los botones del menú */
 .btn-nav:active {
     border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
-    padding: 7px 13px 5px 15px;
+    padding: 5px 0.2em 3px 0.4em;
 }
 
-/* FILA QUE DIVIDE EN 3 COLUMNAS */
+
 .fila-ventanas {
     display: flex;
-    justify-content: center;/*Ver si sacarla*/
+    justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     width: 95vw;
-    max-width: 1250px;
+    max-width: 768px;
     height: calc(100% - 70px); /* Ajuste dinámico de altura disponible */
 }
 
@@ -99,14 +108,15 @@ body {
 
 .contenedor-central {
     position: fixed;
-    top: 47%;               
+    top: 48px;               
     left: 50%;             
-    transform: translate(-50%, -50%); /* centrado  */
-    width: 100%;
-    max-width: 780px;       /* Ancho de la ventana de la guía */
-    height: 78vh;           /* Alto de la ventana (70% de la pantalla) */
+    transform: translate(-50%); 
+    width: 92vw;
+    max-width: 740px;       /* Ancho de la ventana de la guía */
+    height: calc(100vh - 120px); /*mide todo el alto pero resta el navegador y barra de abajo*/
     z-index: 10;            /* Queda en una capa intermedia, bajo el menú */
 }
+
 
 
 /* 3. ventana principal (Página real)*/
@@ -166,14 +176,14 @@ body {
 
 /* 4. mini ventanas a los costados*/
  .mini-ventana {
-    position: fixed; /* Se clavan en la pantalla y no se mueven con el scroll */
+    position: fixed; /* Se clavan en la pantalla */
     background: var(--win-gris);
     width: 190px;    /* Ancho estándar */
     border: 2.5px solid;
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
     padding: 2px;
-    z-index: 50;     /* Quedan flotando sobre el fondo de pantalla */
+    z-index: 50;    
 }
 
 .barra-titulo-mini {
@@ -182,7 +192,7 @@ body {
     padding: 2px 6px;
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
 }
 
@@ -207,8 +217,11 @@ body {
 .contenido-mini-ad {
     background: #ecebeb;
     border: 1px solid var(--win-somb);
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    padding: 5px;           
 }
-
 
 
 /* 5. ventana de video*/
@@ -217,7 +230,7 @@ body {
 }
 
 .video-titulo {
-    background: linear-gradient(90deg, #0a659e, #1084d0) !important; /* Resalta el reproductor activo */
+    background: linear-gradient(90deg, #0a659e, #1084d0) !important; 
 }
 
 .contenido-mini-video {
@@ -335,49 +348,73 @@ footer {
 }
 
 /* --- Ventanas del lado Izq --- */
-
 .v-video {
     top: 400px;       
-    left: 58px;      
-    width: 240px;    
+    left: 2vw;       
+    width: 240px; 
+    z-index: 60;
 }
 
 .v-ergo {
     top: 270px;      
-    left: 120px;     
-    z-index: 60;
+    left: 4.5vw;       
+    z-index: 58;
 }
 
 .v-pub1 {
-    bottom: 330px;    /* Distancia desde el piso de la pantalla (arriba de la barra de tareas) */
-    left: 85px;
+    bottom: 330px;    
+    left: 2.7vw;
 }
 
 
 /* --- Ventanas del lado Derecho --- */
-
 .v-vista {
-    top: 30px;       
-    right: 115px;     
+    top: 6px;       
+    right: 2vw; 
+    width: 200px;     
 }
 
 .v-pub2 {
     top: 230px;      
-    right: 100px;     
+    right: 2.5vw; 
+    width: 190px;  
+    z-index: 59;   
 }
 
 .v-diseno {
-    bottom: 70px;    
-    right: 28px;
+    bottom: 35px;    
+    right: 1vw; 
+    z-index: 60;
 }
 
 .v-link {
-    bottom: 300px;
+    bottom: 377px;
+    right: 1vw; 
+    width: 200px;
+    
 }
+
 
 
 /*8. responsive */
-@media (max-width: 1150px) {
-    .columna-lateral { display: none !important; } /* Cierra las ventanas secundarias priorizando la principal */
-    .barra-navegacion-superior { width: 95vw; }
+@media (max-width: 1220px) {
+    .v-video, .v-ergo, .v-pub1, .v-vista, .v-pub2, .v-diseno, .v-link, .columna-lateral { 
+        display: none !important; 
+    } 
 }
+
+@media (max-width: 600px) {
+    .barra-navegacion-superior { 
+        width: 94vw; 
+    }
+    /* Achica los botones*/
+    .btn-nav {
+        font-size: 1.7vw;    
+        padding: 3px 1px;
+    }
+}
+    
+
+
+
+
