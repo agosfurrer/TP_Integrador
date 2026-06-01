@@ -166,7 +166,7 @@ body {
 .mini-ventana {
     position: fixed; /* Se clavan en la pantalla */
     background: var(--win-gris);
-    width: 190px;    /* Ancho estándar */
+    width: 190px;   
     border: 2.5px solid;
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
@@ -410,11 +410,9 @@ footer {
         flex-wrap: nowrap;       
         overflow-x: auto;        /* Activa el scroll horizontal si no entran */
         justify-content: flex-start; /* Alinea los botones al inicio para deslizar */
-        padding-bottom: 5px;     /* Deja un aire abajo para que no toque el borde */
+        padding-bottom: 9px;     /* Deja un espacio abajo para que no toque el borde */
         -webkit-overflow-scrolling: touch; /* deslizamiento en celu suave */
     }
-
-    
 }
 
 

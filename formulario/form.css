@@ -228,6 +228,7 @@ h1 {
 }
 
 /*Responsive*/
+/*Media Query 1: tablets*/
 @media (max-width: 768px) {
     .contenedor-central {
         width: 94vw;
@@ -236,7 +237,7 @@ h1 {
     }
 }
 
-/* Media Query 2: Celulares */
+/* Media Query 2: celulares */
 @media (max-width: 480px) { 
     .contenedor-central {
         width: 96vw;
