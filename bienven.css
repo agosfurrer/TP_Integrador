@@ -1,208 +1,206 @@
+/*variables */
 @font-face {
-  font-family: 'MiFuente';
-  src: url(../y2k_brutalism/Y2K\ Brutalism\ Typeface.otf) format('truetype');
+    font-family: 'MiFuente';
+    src: url(../y2k_brutalism/Y2K\ Brutalism\ Typeface.otf) format('truetype');
 }
 
 :root {
-  --font-array: 'Array', sans-serif;
+    --font-array: 'Array', sans-serif;
 }
 
-/* --- MODIFICACIÓN: Body ahora es un contenedor flexible para centrar la compu --- */
+/*base y flex*/
 body {
-  margin: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-color: #ffffff; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* --- NUEVO: Este contenedor imita el comportamiento de la imagen 'contain' --- */
+/* Contenedor de la computadora */
 .monitor-area {
-  position: relative;
-  width: 100vmin;  /* Se adapta al lado más corto de la pantalla */
-  height: 100vmin; /* Mantiene la proporción 1:1 para sincronizar con el fondo */
-  background-image: url(../imagenes/compu.gif);
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: 'MiFuente', sans-serif;
+    position: relative;
+    width: 100vmin; 
+    height: 100vmin; 
+    background-image: url(../imagenes/compu.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'MiFuente', sans-serif;
 }
 
-/* --- Título centrado relativo al monitor-area --- */
+/* Inicio*/
 .ini {
-  position: absolute;
-  top: 28%;
-  left: 40%; 
-  transform: translate(-50%, -50%);
-  width: 60%; /* es % del monitor, no de la ventana */
-  z-index: 10;
-  /*habilitar el gap*/
-  display: flex;
-  flex-direction: column;   /* Ponemos los dos títulos y el botón uno abajo del otro */
-  align-items: center;       /* Centra los textos y el botón en el eje horizontal */
-  text-align: center;        /* Mantiene el texto alineado al centro */
-  gap: 20px;
+    position: absolute;
+    top: 28%;
+    left: 40%; 
+    transform: translate(-50%, -50%);
+    width: 60%; 
+    z-index: 10;
+    display: flex;
+    flex-direction: column;   
+    align-items: center;       
+    text-align: center;        
+    gap: 20px;
 }
 
 .ini h1 {
-  font-size: 3vmin; /* Escalado fluido basado en el monitor */
-  color: rgb(230, 238, 255);
-  text-shadow: 0 0.2vmin 0.4vmin #04040c;
-  margin: 0 0vmin 0vmin 15vmin;
+    font-size: 3vmin; 
+    color: rgb(230, 238, 255);
+    text-shadow: 0 0.2vmin 0.4vmin #04040c;
+    margin: 0 0vmin 0vmin 15vmin;
 }
 
 .ini h2 {
-  font-size: 2vmin;
-  color: rgb(13, 3, 61);
-  text-shadow: 0 0.2vmin 0.4vmin #f3f3f3;
-  margin: 0 0vmin 0vmin 15vmin;
-  line-height: 1.2;
-  font-family: var(--font-array);
+    font-size: 2vmin;
+    color: rgb(13, 3, 61);
+    text-shadow: 0 0.2vmin 0.4vmin #f3f3f3;
+    margin: 0 0vmin 0vmin 15vmin;
+    line-height: 1.2;
+    font-family: var(--font-array);
 }
 
-/*Botón con efecto de presionado (hover)*/
+/* botón estilo Windows retro */
 .bt {
-  font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, sans-serif;
-  font-size: 2vmin;
-  padding: 0.5vmin 1.5vmin;
-  min-width: 9vmin;
-  height: auto;
-  background: #c0c0c0;
-  color: #424242;
-  border: none;
-
-  /* outline para borde 3D retro */
-  outline: 0.2vmin solid;
-  outline-color: #ffffff #808080 #808080 #ffffff;
-  box-shadow:
-    inset 1px 1px 0px #dfdfdf,
-    inset -1px -1px 0px #808080;
-  cursor: pointer;
-  user-select: none;
-  line-height: 1;
-  text-align: center;
-  display: inline-block;
-  margin: 0 2vmin 0vmin 15vmin;
+    font-family: 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, sans-serif;
+    font-size: 2vmin;
+    padding: 0.5vmin 1.5vmin;
+    min-width: 9vmin;
+    height: auto;
+    background: #c0c0c0;
+    color: #424242;
+    border: none;
+    outline: 0.2vmin solid;
+    outline-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow:
+        inset 1px 1px 0px #dfdfdf,
+        inset -1px -1px 0px #808080;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
+    margin: 0 2vmin 0vmin 15vmin;
 }
 
 .bt a {
     text-decoration: none;
     font-weight: bold;
     color: inherit;
-    
 }
 
-/*invierte las sombras para que parezca que se aprieta */
 .bt:hover {
-  box-shadow:
-    inset 1px 1px 0px #808080,
-    inset -1px -1px 0px #dfdfdf;
-  outline-color: #808080 #ffffff #ffffff #808080;
+    box-shadow:
+        inset 1px 1px 0px #808080,
+        inset -1px -1px 0px #dfdfdf;
+    outline-color: #808080 #ffffff #ffffff #808080;
 }
-/* --- MODIFICACIÓN: Contenedor de imágenes ahora ocupa todo el monitor-area --- */
+
+/*ubicación de stickers*/
 .img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .centro, .izq, .der, .centro-der, .centro-iz {
-  position: absolute;
-  display: flex;
+    position: absolute;
+    display: flex;
 }
 
-/* --- POSICIONAMIENTO DE GRUPOS (Usando % para que no se muevan) --- */
-
 .centro {
-  bottom: 43%; /* Ajustado para el borde inferior del monitor */
-  left: 33%;
-  transform: translateX(-50%);
-  gap: 100%; 
-  z-index: 6;
+    bottom: 43%; 
+    left: 33%;
+    transform: translateX(-50%);
+    gap: 100%; 
+    z-index: 6;
 }
 
 .centro-der {
-  right: 23%; 
-  top: 10%;
-  flex-direction: column;
-  gap: 7vmin;
-  z-index: 5;
+    right: 23%; 
+    top: 10%;
+    flex-direction: column;
+    gap: 7vmin;
+    z-index: 5;
 }
 
 .centro-iz {
-  left: 13%;
-  top: 15%;
-  flex-direction: column;
-  gap: 9vmin;
-  z-index: 60;/*para que el efecto se mantenga*/
+    left: 13%;
+    top: 15%;
+    flex-direction: column;
+    gap: 9vmin;
+    z-index: 60;
 }
 
 .izq {
-  bottom: 15%;
-  left: -30%;
-  z-index: 5;
+    bottom: 15%;
+    left: -30%;
+    z-index: 5;
 }
 
 .der {
-  bottom: 10%;
-  right: -30%;
-  width: 35%;
-  height: 25%;
-  display: block;
-  z-index: 1;
+    bottom: 10%;
+    right: -30%;
+    width: 35%;
+    height: 25%;
+    display: block;
+    z-index: 1;
 }
 
-/* ESTILOS DE IMÁGENES */
+/* estilos para img*/
 .img img {
-  height: auto;
-  position: relative;
-  transition: transform 0.4s ease;
+    height: auto;
+    position: relative;
+    transition: transform 0.4s ease;
 }
 
+/* Tamaños y rotaciones base */
 #gato { width: 10vmin; transform: rotate(30deg); }
 #cool { width: 10vmin; transform: rotate(27deg); }
 
 #mate { 
-  width: 26vmin; 
-  left: -40%;
-  bottom: -17vmin;
-  transform-origin: bottom right; 
-  transition: transform 0.5s ease-out; 
+    width: 26vmin; 
+    left: -40%;
+    bottom: -17vmin;
+    transform-origin: bottom right; 
+    transition: transform 0.5s ease-out; 
 }
-/*mate se cae, ver si hacerlo*/
 
 #pava { width: 45vmin; left: -30%; bottom: -15vmin;}
 
 #gato-der { 
-  width: 60vmin; 
-  position: absolute;
-  right: -40%;           
-  bottom: -17vmin; /* Pegado a la esquina del contenedor .der */
-  z-index: 3;         
+    width: 60vmin; 
+    position: absolute;
+    right: -40%;           
+    bottom: -17vmin; 
+    z-index: 3;         
 }
 
 #lib {
-  width: 97vmin;       
-  position: absolute; 
-  left: -118%;        
-  bottom: -98%;
-  z-index: 2;         
+    width: 97vmin;       
+    position: absolute; 
+    left: -118%;        
+    bottom: -98%;
+    z-index: 2;         
 }
 
-/* Stickers pequeños */
+/* Stickers  */
 #al { width: 7vmin; transform: rotate(-22deg); left: 25%; top: 10%; }
 #ju { width: 7vmin; transform: rotate(-20deg); left: 33%; }
 #gus { width: 8vmin; transform: rotate(-44deg); left: 7%; top: 5vmin; }
 #cora { width: 10vmin; transform: rotate(-20deg); left: 10%;}
-#perro { width: 7vmin;  left: 19%;}
+#perro { width: 7vmin; left: 19%;}
 
-/* Efectos Hover */
+/* Efecto hover */
 #gato:hover, #cool:hover, #al:hover, #ju:hover, #gus:hover, #cora:hover {
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
-#perro:hover { transform: translateY(-0.5vmin); }
+
+#perro:hover { 
+    transform: translateY(-0.5vmin); 
+}

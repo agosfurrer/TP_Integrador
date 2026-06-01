@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de contacto</title>
-    <link rel="shortcut icon" href="../imagenes/poblacion.png" type="image/x-icon">
     <link rel="stylesheet" href="form.css">
     <link href="https://api.fontshare.com/v2/css?f[]=array@400,701&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="../imagenes/favi-form.gif" type="image/x-icon">
 </head>
 <body>
 
@@ -24,41 +24,43 @@
         <div class="cuerpo-ventana">
             
             <nav class="contenedor-regreso">
-                <a href="../principal/guia.html" class="enlace-volver"><i>꧁ Volver a la guía ꧂</i></a>
+                <a href="../principal/guia.html" class="enlace-volver">꧁ Volver a la guía ꧂</a>
             </nav>
 
             <article>
-                <h1><i>¡Compartinos lo que pensás!</i></h1>
+                <h1>¡Compartinos lo que pensás!</h1>
             </article>
 
-            <form action="">
+            <form action="#">
                 <fieldset class="grupo-formulario">
-                    <legend><i>Datos personales</i></legend>
-                    <br>
-                    <label for="nombre"><i>Nombre:</i></label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ingrese nombre" class="entrada-texto" required>
-                    <br><br>
+                    <legend>Datos personales</legend>
+                    
+                    <div class="campo-formulario">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ingrese nombre" class="entrada-texto" required>
+                    </div>
 
-                    <label for="apellido"><i>Apellido:</i></label>
-                    <input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido" class="entrada-texto">
-                    <br><br>
+                    <div class="campo-formulario">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" placeholder="Ingrese apellido" class="entrada-texto">
+                    </div>
 
-                    <label for="celular"><i>Celular:</i></label>
-                    <input type="tel" id="celular" name="celular" pattern="[0-9]+" title="Solo números" placeholder="Ingrese número de celular" class="entrada-texto" required>
-                    <br><br>
+                    <div class="campo-formulario">
+                        <label for="celular">Celular:</label>
+                        <input type="tel" id="celular" name="celular" pattern="[0-9]+" title="Solo números" placeholder="Ingrese número de celular" class="entrada-texto" required>
+                    </div>
 
-                    <label for="email"><i>Email:</i></label>
-                    <input type="email" id="email" name="email" placeholder="Ingrese email" class="entrada-texto" required>
-                    <br><br>
+                    <div class="campo-formulario">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Ingrese email" class="entrada-texto" required>
+                    </div>
                 </fieldset>
 
-                <br>
-
                 <fieldset class="grupo-formulario">
-                    <legend><i>Preferencias</i></legend>
-                    <br>
-                    <label><i>¿Te gustó la página?</i></label> 
-                    <br><br>
+                    <legend>Preferencias</legend>
+                    
+                    <span class="pregunta-formulario">¿Te gustó la página?</span> 
+                    
                     <div class="opcion-seleccion"><input type="radio" name="valoracion" id="v1" value="si"> <label for="v1">Si</label></div>
                     <div class="opcion-seleccion"><input type="radio" name="valoracion" id="v2" value="no"> <label for="v2">No</label></div>
                     <div class="opcion-seleccion"><input type="radio" name="valoracion" id="v3" value="mejorar"> <label for="v3">Puede mejorar</label></div>
@@ -66,39 +68,36 @@
                     
                     <hr class="linea-separadora">
                     
-                    <label><i>¿Qué parte te gustó más?</i></label> 
-                    <br><br>
+                    <span class="pregunta-formulario">¿Qué parte te gustó más?</span> 
+                    
                     <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p1" value="publicidad"> <label for="p1">La publicidad</label></div>
                     <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p2" value="tips"> <label for="p2">Los tips</label></div>
                     <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p3" value="apps"> <label for="p3">Las aplicaciones</label></div>
-                    <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p4" value="recom"> <label for="p4">Las recommendations</label></div>
+                    <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p4" value="recom"> <label for="p4">Las recomendaciones</label></div>
                     <div class="opcion-seleccion"><input type="checkbox" name="gusto" id="p5" value="consejos"> <label for="p5">Los consejos para estudiar</label></div>
                 </fieldset>
 
-                <br>
-
                 <fieldset class="grupo-formulario">
-                    <legend><i>Opiniones</i></legend>
-                    <br>
-                    <textarea name="comentarios" id="comentarios" rows="7" cols="40" maxlength="171" placeholder="Escriba aquí sus consejos o sugerencias..." class="area-comentario"></textarea> 
-                    <br> <br>
+                    <legend>Opiniones</legend>
+                    
+                    <div class="campo-formulario">
+                        <textarea name="comentarios" id="comentarios" rows="7" cols="40" maxlength="171" placeholder="Escriba aquí sus consejos o sugerencias..." class="area-comentario"></textarea> 
+                    </div>
 
                     <div class="contenedor-botones-form">
                         <input type="submit" value="Enviar" class="btn-formulario">
                         <input type="reset" value="Limpiar" class="btn-formulario">
                     </div>
-                    <br>
 
                     <hr class="linea-separadora">
-                    <h3><i>Gracias por sumar tu experiencia a esta guía de supervivencia. ¡Éxitos con el estudio! — 🎧ྀི</i></h3>
+                    <h3 class="agradecimiento">Gracias por sumar tu experiencia a esta guía de supervivencia. ¡Éxitos con el estudio! — 🎧ྀི</h3>
                 </fieldset>
             </form>
 
             <footer class="pie-ventana">
-                <p><b><i>Hecho por Furrer Agostina - 2026</i></b></p>
+                <p><b>Hecho por Furrer Agostina - 2026</b></p>
             </footer>
         </div>
     </main>
 </body>
-
 </html>

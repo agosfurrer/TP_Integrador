@@ -1,13 +1,11 @@
-/* 1. Fuentes, variables*/
+/* Fuentes, variables*/
 :root {
     --win-gris: #c0c0c0;
     --win-blan: #ffffff;
     --win-somb: #808080;
     --win-azul: #000080;
-    --font-array: 'Array', sans-serif; /*tipografía original */
+    --font-array: 'Array', sans-serif; 
 }
-
-
 
 body {
     background-image: url(../imagenes/fondo.gif);
@@ -24,17 +22,16 @@ body {
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
 }
 
-
-/* 2. Distribucion escritorio windows*/
+/*Distribucion escritorio windows*/
 .escritorio {
     width: 100vw;
     height: calc(200vh - 640px); 
     position: relative;
-    padding: 52px 40px 4px ;/*70px*/
+    padding: 52px 40px 4px ;
     box-sizing: border-box;
 }
 
-/* Barra de nav superior (forzada para visibilidad completa) */
+/* Barra de nav superior */
 .barra-navegacion-superior {
     position: fixed; /* Se queda clavado en la pantalla */
     top: 8px;       /* Separación del monitor */
@@ -48,11 +45,8 @@ body {
     padding: 4px;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 1000; /* Asegura que pase por encima de cualquier otra ventana */
-     overflow: hidden;
+    overflow: hidden;
 }
-
-
-
 
 .nav-contenido {
     display: flex;
@@ -64,8 +58,8 @@ body {
 }
 
 .btn-nav {
-    flex-grow: 1;      /* Hace que todos los botones midan lo mismo y se repartan el espacio */
-    flex-shrink: 1;    /* Les da permiso obligatorio para encogerse */
+    flex-grow: 1;      /*todos los botones miden lo mismo y se repartan el espacio */
+    flex-shrink: 1;    /*da permiso obligatorio para q se achiquen */
     text-align: center;
     white-space: nowrap; 
     background: var(--win-gris);
@@ -78,15 +72,11 @@ body {
     font-weight: bold;
 }
 
-
-
-
 /* Efecto click en los botones del menú */
 .btn-nav:active {
     border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
     padding: 5px 0.2em 3px 0.4em;
 }
-
 
 .fila-ventanas {
     display: flex;
@@ -95,7 +85,7 @@ body {
     gap: 10px;
     width: 95vw;
     max-width: 768px;
-    height: calc(100% - 70px); /* Ajuste dinámico de altura disponible */
+    height: calc(100% - 70px); /* ajuste de altura disponible */
 }
 
 .columna-lateral {
@@ -108,7 +98,7 @@ body {
 
 .contenedor-central {
     position: fixed;
-    top: 48px;               
+    top: 48px;              
     left: 50%;             
     transform: translate(-50%); 
     width: 92vw;
@@ -117,13 +107,11 @@ body {
     z-index: 10;            /* Queda en una capa intermedia, bajo el menú */
 }
 
-
-
-/* 3. ventana principal (Página real)*/
+/* ventana principal (Página real)*/
 .ventana-principal {
     background: var(--win-gris);
     width: 100%;
-    height: 100%;           /* Ocupa el 100% del alto que le dimos al contenedor */
+    height: 100%;           
     border: 2px solid;
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 8px 8px 0px rgba(0,0,0,0.3);
@@ -159,7 +147,7 @@ body {
     flex-grow: 1;
     margin: 2px;
     border: 2px solid var(--win-somb);
-    overflow-y: scroll; /* Scroll web estándar para navegar */
+    overflow-y: scroll; /* Scroll web para navegar */
     padding: 25px;
 }
 
@@ -174,8 +162,8 @@ body {
     margin: 20px 0;
 }
 
-/* 4. mini ventanas a los costados*/
- .mini-ventana {
+/*mini ventanas a los costados*/
+.mini-ventana {
     position: fixed; /* Se clavan en la pantalla */
     background: var(--win-gris);
     width: 190px;    /* Ancho estándar */
@@ -187,7 +175,7 @@ body {
 }
 
 .barra-titulo-mini {
-    background: #808080; /* Desactivada/Secundaria */
+    background: #808080; 
     color: white;
     padding: 2px 6px;
     display: flex;
@@ -223,8 +211,7 @@ body {
     padding: 5px;           
 }
 
-
-/* 5. ventana de video*/
+/* ventana de video*/
 .ventana-video {
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
 }
@@ -249,12 +236,13 @@ body {
     margin-top: 2px;
 }
 
-/* 6. contenidos y textos*/
+/* contenidos y textos*/
 h1 { 
     font-size: 1.5rem; 
     color: var(--win-azul); 
     margin-bottom: 8px; 
 }
+
 h2 { 
     font-size: 1.2rem; 
     margin-bottom: 12px; 
@@ -262,22 +250,25 @@ h2 {
     border-top: 1.5px solid rgb(212, 212, 212);
     border-bottom: 1.3px solid rgb(214, 213, 213); 
     padding-bottom: 4px;
- }
+}
 
 h3 { 
     margin: 12px 0 6px 0; 
     font-size: 13px; 
 }
+
 p { 
     line-height: 1.4; 
     margin-bottom: 10px; 
     font-size: 14px; 
 }
+
 ul, ol { 
     margin-left: 20px; 
     margin-bottom: 12px; 
     font-size: 14px; 
 }
+
 li { 
     margin-bottom: 4px; 
 }
@@ -295,10 +286,12 @@ th {
     border: 1px solid var(--win-somb); 
     font-weight: bold; 
 }
+
 td { 
     padding: 6px; 
     border: 1px solid #ccc; 
 }
+
 .imagen { 
     text-align: center; 
     margin: 15px 0; 
@@ -311,6 +304,7 @@ td {
     display: inline-block; 
     margin-top: 5px; 
 }
+
 .win-link { 
     color: #b00000; 
     font-weight: bold;
@@ -323,7 +317,7 @@ td {
     text-align: center;
 }
 
-/* 7. footer */
+/* footer */
 footer {
     position: fixed;
     bottom: 0; width: 100%;
@@ -332,16 +326,19 @@ footer {
     padding: 5px 55px;
     z-index: 500;
 }
+
 .copyright { 
     text-align: center; 
     font-size: 17px; 
-    color: rgb(rgb(43, 44, 65)); 
+    color: rgb(43, 44, 65); 
     margin-top: 2px; 
 }
+
 /*titulo de los tips*/
 .contenido-mini h3 {
     text-align: center;
 }
+
 /*texto de los tips*/
 .contenido-mini p {
     text-align: left;
@@ -357,7 +354,7 @@ footer {
 
 .v-ergo {
     top: 270px;      
-    left: 4.5vw;       
+    left: 4.5vw;      
     z-index: 58;
 }
 
@@ -365,7 +362,6 @@ footer {
     bottom: 330px;    
     left: 2.7vw;
 }
-
 
 /* --- Ventanas del lado Derecho --- */
 .v-vista {
@@ -388,15 +384,13 @@ footer {
 }
 
 .v-link {
-    bottom: 377px;
+    bottom: 394px;
     right: 1vw; 
     width: 200px;
-    
+    z-index: 58;
 }
 
-
-
-/*8. responsive */
+/*responsive */
 @media (max-width: 1220px) {
     .v-video, .v-ergo, .v-pub1, .v-vista, .v-pub2, .v-diseno, .v-link, .columna-lateral { 
         display: none !important; 
@@ -412,8 +406,16 @@ footer {
         font-size: 1.7vw;    
         padding: 3px 1px;
     }
-}
+    .nav-contenido {
+        flex-wrap: nowrap;       
+        overflow-x: auto;        /* Activa el scroll horizontal si no entran */
+        justify-content: flex-start; /* Alinea los botones al inicio para deslizar */
+        padding-bottom: 5px;     /* Deja un aire abajo para que no toque el borde */
+        -webkit-overflow-scrolling: touch; /* deslizamiento en celu suave */
+    }
+
     
+}
 
 
 

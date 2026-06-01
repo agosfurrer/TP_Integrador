@@ -4,7 +4,7 @@
     --sombra-windows: #808080;
     --blanco-windows: #ffffff;
     --texto-color: #000000;
-     --font-array: 'Array', sans-serif;
+    --font-array: 'Array', sans-serif;
 }
 
 /* Base del cuerpo*/
@@ -92,42 +92,78 @@ body {
     font-size: 13px;
     font-weight: bold;
     display: inline-block;
+    font-style: italic;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .enlace-volver:hover {
-    text-decoration: underline; /* Se subraya al pasar el mouse*/
+    text-decoration: underline; 
     color: #0000ff;
+    transform: scale(1.05);
 }
 
 /* Diseño interno del form */
 h1 {
-    font-size: 22px;
+    font-size: 21px;
     color: var(--azul-windows);
     margin-top: 5px;
     margin-bottom: 15px;
+    font-style: italic;
 }
 
 .grupo-formulario {
     border: 2px solid var(--gris-windows);
     padding: 12px;
     background: #fafafa;
+    margin-bottom: 20px; /* Reemplaza los <br> externos */
+    border-radius: 6px;
+    display: grid; 
+    grid-template-columns: 1fr; 
+    border-radius: 6px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.grupo-formulario:hover {
+    transform: translateY(-2px); 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .grupo-formulario legend {
     font-weight: bold;
     background: var(--blanco-windows);
     padding: 0 6px;
+    font-style: italic;
 }
 
-/* Campos de texto estilo clásico */
+/* Contenedores de campos internos */
+.campo-formulario {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.campo-formulario label {
+    font-style: italic;
+}
+
+.pregunta-formulario {
+    display: block;
+    font-style: italic;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Campos de texto */
 .entrada-texto, .area-comentario {
     width: 95%;
     max-width: 400px;
     border: 2px solid;
     border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows);
     padding: 4px;
-    font-family: sans-serif;
+    font-family: var(--font-array); 
     font-size: 13px;
+    border-radius: 4px;
 }
 
 .area-comentario {
@@ -136,7 +172,7 @@ h1 {
 }
 
 .opcion-seleccion {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -152,6 +188,7 @@ h1 {
 .contenedor-botones-form {
     display: flex;
     gap: 10px;
+    margin-top: 15px;
 }
 
 .btn-formulario {
@@ -159,13 +196,24 @@ h1 {
     border: 2px solid;
     border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows);
     padding: 6px 15px;
-    font-family: 'Array', sans-serif;
+    font-family: var(--font-array);
     font-weight: bold;
     cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-formulario:hover {
+    background-color: #dfdfdf;
 }
 
 .btn-formulario:active {
     border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows);
+}
+
+.agradecimiento {
+    font-size: 14px;
+    font-style: italic;
 }
 
 .pie-ventana {
@@ -175,11 +223,27 @@ h1 {
     color: var(--sombra-windows);
 }
 
+.pie-ventana b i {
+    font-style: italic;
+}
+
 /*Responsive*/
-@media (max-width: 600px) { 
+@media (max-width: 768px) {
+    .contenedor-central {
+        width: 94vw;
+        top: 25px;
+        height: calc(100vh - 50px);
+    }
+}
+
+/* Media Query 2: Celulares */
+@media (max-width: 480px) { 
     .contenedor-central {
         width: 96vw;
         top: 15px;
         height: calc(100vh - 30px);
+    }
+    h1 {
+        font-size: 18px; /* Achica un toque el título */
     }
 }
