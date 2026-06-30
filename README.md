@@ -60,5 +60,9 @@ Para la web se inspiró en diversos sitios alojados en Neocities.com. Allí se e
 Página 1: https://hhroses.art/
 Página 2: https://lostlove.neocities.org/ 
 
+-- Tercera parte ---------------------------------------------------------------------------------------------------------
+se realizaron dos scripts, uno para la página principal y el otro para el formulario.
+
+
 # Nombre de la autora
 🎧ྀི Furrer Agostina

@@ -50,8 +50,7 @@ body {
     align-items: center;
     font-family: var(--font-array);
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
-    overflow-y: auto;   /* Permite scroll general solo si la pantalla colapsa por completo */
-}
+  }
 
 /* Capa que procesa y oscurece el GIF */
 body::before {
@@ -410,7 +409,7 @@ footer {
 .v-vista { top: 6px; right: 2vw; width: 200px; }
 .v-pub2 { top: 230px; right: 2.5vw; width: 190px; z-index: 59; }
 .v-diseno { bottom: 35px; right: 1vw; z-index: 60; }
-.v-link { bottom: 394px; right: 1vw; width: 200px; z-index: 58; }
+.v-link { bottom: 394px; right: 1vw; width: 200px; z-index: 60; }
 
 /* Contenedor del Botón */
 .contenedor-modo-oscuro {

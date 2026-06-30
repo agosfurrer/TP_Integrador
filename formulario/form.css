@@ -7,6 +7,81 @@
     --font-array: 'Array', sans-serif;
 }
 
+/*modo oscuro*/
+body.dark-mode {
+    --gris-windows: #191f1c !important;
+    --azul-windows: #022002 !important;
+    --sombra-windows: #0b110f !important;
+    --blanco-windows: #232c2a !important;
+    --texto-color: #00ff00 !important;
+    background-image: linear-gradient(rgba(6, 12, 3, 0.945), rgba(6, 22, 14, 0.973)), url("../imagenes/fondo.gif") !important;
+}
+
+/* Ajuste de los campos de entrada de texto y textareas en modo oscuro */
+body.dark-mode .entrada-texto,
+body.dark-mode .area-comentario,
+body.dark-mode select {
+    background-color: var(--sombra-windows) !important;
+    color: var(--texto-color)!important;
+    border-color: var(--sombra-windows) var(--blanco-windows) var(--blanco-windows) var(--sombra-windows) !important;
+}
+
+/* Ajuste de los botones*/
+body.dark-mode #btn-modo-oscuro-form,
+body.dark-mode .btn-formulario,
+body.dark-mode .btn-mini-win {
+    color: #00ff00 !important;
+    background: #19221e !important;
+    border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows) !important;
+}
+body.dark-mode .btn-formulario:hover {
+    background-color:var(--blanco-windows) !important;
+}
+
+/* Cambiar el color de los enlaces de regreso */
+body.dark-mode .enlace-volver {
+    color: var(--texto-color)!important;
+}
+/*botón*/
+body.dark-mode #btn-modo-oscuro-form {
+    color: var(--texto-color)!important;
+    border-color: var(--blanco-windows) var(--sombra-windows) var(--sombra-windows) var(--blanco-windows) !important;
+}
+
+body.dark-mode .contenedor-central,
+body.dark-mode label,
+body.dark-mode .pregunta-formulario,
+body.dark-mode h1,
+body.dark-mode h3,
+body.dark-mode p,
+body.dark-mode legend,
+body.dark-mode .texto-titulo,              /* Letra en la cabecera de la ventana principal */
+body.dark-mode .agradecimiento {           /* Espacios o textos del final */
+    color: var(--texto-color) !important;
+}
+
+body.dark-mode .cuerpo-ventana,
+body.dark-mode fieldset,
+body.dark-mode form {
+    background-color: var(--gris-windows) !important;
+    color: var(--texto-color) !important;
+}
+
+/* --- SCROLLBAR RETRO PERSONALIZADA EN MODO OSCURO --- */
+body.dark-mode .contenedor-central::-webkit-scrollbar {
+    width: 16px !important;
+    background-color: #0d1311 !important; /* Canal de la barra oscuro */
+}
+body.dark-mode .contenedor-central::-webkit-scrollbar-thumb {
+    background-color: #1c2622 !important; /* Barra de arrastre */
+    border: 2px solid !important;
+    border-color: #2d3834 #050807 #050807 #2d3834 !important; /* Bordes simulando relieve retro */
+}
+body.dark-mode .contenedor-central {
+    scrollbar-color: #1c2622 #0d1311 !important;
+    scrollbar-width: auto !important;
+}
+
 /* Base del cuerpo*/
 body {
     margin: 0;
