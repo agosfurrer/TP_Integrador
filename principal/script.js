@@ -7,6 +7,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     configurarBotonesCierre();
     hacerTodasLasVentanasArrastrables();
+    configurarModoOscuroRetro();
 });
 
 /**
@@ -97,5 +98,37 @@ function hacerTodasLasVentanasArrastrables() {
             document.addEventListener("mousemove", arrastrarMouse);
             document.addEventListener("mouseup", soltarMouse);
         });
+    });
+}
+
+/**
+ * FUNCIÓN 3: Control del Modo Oscuro Retro (Cumpliendo reglas de entrega)
+ */
+function configurarModoOscuroRetro() {
+    const botonRetro = document.getElementById("btn-modo-oscuro");
+    
+    // Control de seguridad: Si no encuentra el ID, no ejecuta para no romper el script
+    if (!botonRetro) return;
+
+    // PERSISTENCIA: Verifica si el usuario ya lo había activado antes
+    if (localStorage.getItem("modo-retro") === "oscuro") {
+        document.body.classList.add("dark-mode");
+        botonRetro.textContent = "Modo Claro";
+    }
+
+    // ESCUCHADOR DE EVENTOS: Separación absoluta de HTML y JS
+    botonRetro.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+
+        // Cambiamos el texto del botón y guardamos el estado en el navegador
+        if (document.body.classList.contains("dark-mode")) {
+            botonRetro.textContent = "Modo Claro";
+            localStorage.setItem("modo-retro", "oscuro");
+            console.log("Modo oscuro retro aplicado.");
+        } else {
+            botonRetro.textContent = "Modo Oscuro";
+            localStorage.setItem("modo-retro", "claro");
+            console.log("Modo claro retro aplicado.");
+        }
     });
 }

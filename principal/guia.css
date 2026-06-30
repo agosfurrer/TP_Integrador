@@ -1,18 +1,52 @@
-/* Fuentes, variables*/
+/* ==========================================================================
+   1. FUENTES Y VARIABLES (CON MODO OSCURO INTEGRADO)
+   ========================================================================== */
 :root {
-    --win-gris: #c0c0c0;
+    --win-gris: #b1b1b1;
     --win-blan: #ffffff;
     --win-somb: #808080;
     --win-azul: #000080;
     --font-array: 'Array', sans-serif; 
+    --filtro-tinte: transparent; /* Sin tinte de color en modo claro */
+    --filtro-brillo: none;
+    --win-fondo-interno: #ffffff; /* Blanco puro original */
+    
+    /* Variables dinámicas para degradés, textos y tablas */
+    --win-barra-deg1: #000080;
+    --win-barra-deg2: #1084d0;
+    --win-barra-video1: #0a659e;
+    --win-barra-video2: #1084d0;
+    --win-texto: #000000;
+    --win-borde-tabla: #ccc;
 }
 
+body.dark-mode {
+    --win-gris: #1d2522;          /* Gris oscuro con tinte verde para tus ventanas */
+    --win-blan: #3a4743;          /* Bordes brillantes opacos */
+    --win-somb: #0b110f;          /* Sombras profundas */
+    --win-azul: #023002;          /* Cabeceras base en verde oscuro */
+    --win-texto: #00ff00;         /* Texto verde retro estilo terminal */
+    --filtro-tinte: rgba(12, 48, 12, 0.5); /* Capa verde oscura translúcida sobre el GIF */
+    --filtro-brillo: brightness(0.20) contrast(1.20); 
+    --win-fondo-interno: #111614; /* Fondo ultra oscuro para el interior de las ventanas */
+    
+    /* Degradés y bordes nocturnos */
+    --win-barra-deg1: #023002;    
+    --win-barra-deg2: #0a630a;    
+    --win-barra-video1: #012201;  
+    --win-barra-video2: #054d05;
+    --win-borde-tabla: #0a630a;   
+}
+
+/* ==========================================================================
+   2. ESTILOS BASE DEL BODY Y CAPA FILTRO
+   ========================================================================== */
 body {
     background-image: url(../imagenes/fondo.gif);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    min-height: 100vh; 
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -22,19 +56,54 @@ body {
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
 }
 
-/*Distribucion escritorio windows*/
+/* Capa mágica que procesa y oscurece tu GIF de fondo sin quitarlo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--filtro-tinte);
+    backdrop-filter: var(--filtro-brillo);
+    -webkit-backdrop-filter: var(--filtro-brillo);
+    pointer-events: none; /* Permite hacer clic en las ventanas sin interferir */
+    z-index: -1; /* Se posiciona justo encima del GIF pero DETRÁS de las ventanas */
+    transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Color base del texto y transiciones generales */
+.ventana-principal,
+.mini-ventana, 
+.mini-ventana span, 
+.nav-contenido {
+    color: var(--win-texto);
+    transition: color 0.3s ease;
+}
+
+/* Aplicar el color variable al fondo interior de tus ventanas chiquitas */
+.contenido-mini, 
+.contenido-mini-video, 
+.contenido-mini-ad { 
+    background-color: var(--win-fondo-interno) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* ==========================================================================
+   3. ESTRUCTURA Y LAYOUT (ESCRITORIO WINDOWS)
+   ========================================================================== */
 .escritorio {
     width: 100vw;
     height: calc(200vh - 640px); 
     position: relative;
-    padding: 52px 40px 4px ;
+    padding: 52px 40px 4px;
     box-sizing: border-box;
 }
 
 /* Barra de nav superior */
 .barra-navegacion-superior {
     position: fixed; /* Se queda clavado en la pantalla */
-    top: 8px;       /* Separación del monitor */
+    top: 8px; /* Separación del monitor */
     left: 50%;
     transform: translateX(-50%); 
     width: 95vw;
@@ -46,6 +115,7 @@ body {
     box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
     z-index: 1000; /* Asegura que pase por encima de cualquier otra ventana */
     overflow: hidden;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .nav-contenido {
@@ -58,8 +128,8 @@ body {
 }
 
 .btn-nav {
-    flex-grow: 1;      /*todos los botones miden lo mismo y se repartan el espacio */
-    flex-shrink: 1;    /*da permiso obligatorio para q se achiquen */
+    flex-grow: 1; /* Todos los botones miden lo mismo y se reparten el espacio */
+    flex-shrink: 1; /* Da permiso obligatorio para q se achiquen */
     text-align: center;
     white-space: nowrap; 
     background: var(--win-gris);
@@ -70,6 +140,7 @@ body {
     font-size: 10px;         
     padding: 4px 2px;   
     font-weight: bold;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 /* Efecto click en los botones del menú */
@@ -85,7 +156,7 @@ body {
     gap: 10px;
     width: 95vw;
     max-width: 768px;
-    height: calc(100% - 70px); /* ajuste de altura disponible */
+    height: calc(100% - 70px); /* Ajuste de altura disponible */
 }
 
 .columna-lateral {
@@ -100,14 +171,16 @@ body {
     position: fixed;
     top: 48px;              
     left: 50%;             
-    transform: translate(-50%); 
+    transform: translate(-50%);
     width: 92vw;
-    max-width: 740px;       /* Ancho de la ventana de la guía */
-    height: calc(100vh - 120px); /*mide todo el alto pero resta el navegador y barra de abajo*/
-    z-index: 10;            /* Queda en una capa intermedia, bajo el menú */
+    max-width: 740px; /* Ancho de la ventana de la guía */
+    height: calc(100vh - 120px); /* Mide todo el alto pero resta el navegador y barra de abajo */
+    z-index: 10; /* Queda en una capa intermedia, bajo el menú */
 }
 
-/* ventana principal (Página real)*/
+/* ==========================================================================
+   4. VENTANAS (PRINCIPAL Y MINI VENTANAS)
+   ========================================================================== */
 .ventana-principal {
     background: var(--win-gris);
     width: 100%;
@@ -118,16 +191,18 @@ body {
     display: flex;
     flex-direction: column;
     padding: 2px;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .barra-titulo {
-    background: linear-gradient(90deg, var(--win-azul), #1084d0);
+    background: linear-gradient(90deg, var(--win-barra-deg1), var(--win-barra-deg2));
     color: white;
     padding: 4px 10px;
     display: flex;
     justify-content: space-between;
     font-weight: bold;
     font-size: 13px;
+    transition: background 0.3s ease;
 }
 
 .btn-win {
@@ -141,14 +216,15 @@ body {
     cursor: pointer;
 }
 
-/* contenedor con scroll interno */
+/* Contenedor central blanco con scroll interno */
 .pantalla-contenido {
-    background: white;
+    background: var(--win-fondo-interno) !important;
     flex-grow: 1;
     margin: 2px;
     border: 2px solid var(--win-somb);
     overflow-y: scroll; /* Scroll web para navegar */
     padding: 25px;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .seccion-bloque {
@@ -162,7 +238,7 @@ body {
     margin: 20px 0;
 }
 
-/*mini ventanas a los costados*/
+/* Mini ventanas a los costados */
 .mini-ventana {
     position: fixed; /* Se clavan en la pantalla */
     background: var(--win-gris);
@@ -171,20 +247,22 @@ body {
     border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
     padding: 2px;
-    z-index: 50;    
+    z-index: 50;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .barra-titulo-mini {
-    background: #808080; 
+    background: var(--win-azul); /* Vinculado a la variable dinámica */
     color: white;
     padding: 2px 6px;
     display: flex;
     justify-content: space-between;
     font-size: 10px;
     font-weight: bold;
+    transition: background 0.3s ease;
 }
 
-.btn-win-mini { /*equis X*/
+.btn-win-mini { /* Equis X */
     background: var(--win-gris);
     color: black;
     border: 1px solid;
@@ -196,28 +274,14 @@ body {
     cursor: pointer;
 }
 
-.contenido-mini {
-    background: #ffffe1;
-    border: 1px solid var(--win-somb);
-    padding: 5px;
-}
-
-.contenido-mini-ad {
-    background: #ecebeb;
-    border: 1px solid var(--win-somb);
-    display: flex;
-    justify-content: center; 
-    align-items: center;    
-    padding: 5px;           
-}
-
-/* ventana de video*/
+/* Ventana de video */
 .ventana-video {
     box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
 }
 
 .video-titulo {
-    background: linear-gradient(90deg, #0a659e, #1084d0) !important; 
+    background: linear-gradient(90deg, var(--win-barra-video1), var(--win-barra-video2)) !important; 
+    transition: background 0.3s ease;
 }
 
 .contenido-mini-video {
@@ -234,11 +298,14 @@ body {
     text-align: left;
     border-top: 2px solid var(--win-blan);
     margin-top: 2px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* contenidos y textos*/
+/* ==========================================================================
+   5. CONTENIDOS, TEXTOS Y ELEMENTOS INTERNOS
+   ========================================================================== */
 h1 { 
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     color: var(--win-azul); 
     margin-bottom: 8px; 
 }
@@ -254,19 +321,19 @@ h2 {
 
 h3 { 
     margin: 12px 0 6px 0; 
-    font-size: 13px; 
+    font-size: 13px;
 }
 
 p { 
     line-height: 1.4; 
     margin-bottom: 10px; 
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 ul, ol { 
     margin-left: 20px; 
     margin-bottom: 12px; 
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 li { 
@@ -275,7 +342,7 @@ li {
 
 table { 
     width: 100%; 
-    border-collapse: collapse; 
+    border-collapse: collapse;
     margin: 15px 0; 
     font-size: 12px; 
 }
@@ -283,13 +350,14 @@ table {
 th { 
     background: var(--win-gris); 
     padding: 6px; 
-    border: 1px solid var(--win-somb); 
+    border: 1px solid var(--win-somb);
     font-weight: bold; 
 }
 
 td { 
     padding: 6px; 
-    border: 1px solid #ccc; 
+    border: 1px solid var(--win-borde-tabla);
+    transition: border 0.3s ease;
 }
 
 .imagen { 
@@ -298,7 +366,7 @@ td {
 }
 
 .link-volver { 
-    color: var(--win-azul); 
+    color: var(--win-azul);
     text-decoration: none; 
     font-size: 12px; 
     display: inline-block; 
@@ -317,7 +385,7 @@ td {
     text-align: center;
 }
 
-/* footer */
+/* Footer */
 footer {
     position: fixed;
     bottom: 0; width: 100%;
@@ -325,96 +393,156 @@ footer {
     border-top: 2px solid var(--win-blan);
     padding: 5px 55px;
     z-index: 500;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .copyright { 
     text-align: center; 
     font-size: 17px; 
-    color: rgb(43, 44, 65); 
+    color: rgb(43, 44, 65);
     margin-top: 2px; 
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/*titulo de los tips*/
-.contenido-mini h3 {
-    text-align: center;
+.contenido-mini h3 { text-align: center; }
+.contenido-mini p { text-align: left; }
+
+/* Posicionamiento Ventanas Izquierdas */
+.v-video { top: 400px; left: 2vw; width: 240px; z-index: 60; }
+.v-ergo { top: 270px; left: 4.5vw; z-index: 58; }
+.v-pub1 { bottom: 330px; left: 2.7vw; }
+
+/* Posicionamiento Ventanas Derechas */
+.v-vista { top: 6px; right: 2vw; width: 200px; }
+.v-pub2 { top: 230px; right: 2.5vw; width: 190px; z-index: 59; }
+.v-diseno { bottom: 35px; right: 1vw; z-index: 60; }
+.v-link { bottom: 394px; right: 1vw; width: 200px; z-index: 58; }
+
+/* Contenedor del Botón */
+.contenedor-modo-oscuro {
+    position: absolute;
+    bottom: 3px;  
+    right: 90px;   
+    z-index: 1000;
 }
 
-/*texto de los tips*/
-.contenido-mini p {
-    text-align: left;
+/* Botón con el relieve clásico de Windows 95 */
+.btn-retro-sistema {
+    background: var(--win-gris);
+    color: var(--win-texto);
+    font-family: 'MS Sans Serif', Geneva, sans-serif;
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 2px solid;
+    border-color: var(--win-blan) var(--win-somb) var(--win-somb) var(--win-blan);
+    cursor: pointer;
+    box-shadow: 1px 1px 0px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* --- Ventanas del lado Izq --- */
-.v-video {
-    top: 400px;       
-    left: 2vw;       
-    width: 240px; 
-    z-index: 60;
+/* Efecto hundido al hacer clic */
+.btn-retro-sistema:active {
+    border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
+    padding: 5px 11px 3px 13px;
 }
 
-.v-ergo {
-    top: 270px;      
-    left: 4.5vw;      
-    z-index: 58;
+/* Ajuste visual del botón en modo oscuro */
+body.dark-mode #btn-modo-oscuro {
+    border-color: #444 #050505 #050505 #444;
 }
 
-.v-pub1 {
-    bottom: 330px;    
-    left: 2.7vw;
+/* ==========================================================================
+   6. CAZA-BLANCOS, ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)
+   ========================================================================== */
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode p, 
+body.dark-mode li,
+body.dark-mode th {
+    color: var(--win-texto) !important;
+    border-color: var(--win-somb) !important; /* Para los bordes y separadores */
 }
 
-/* --- Ventanas del lado Derecho --- */
-.v-vista {
-    top: 6px;       
-    right: 2vw; 
-    width: 200px;     
+/* Botones de navegación superior legibles */
+body.dark-mode .btn-nav {
+    color: var(--win-texto) !important;
 }
 
-.v-pub2 {
-    top: 230px;      
-    right: 2.5vw; 
-    width: 190px;  
-    z-index: 59;   
+/* Botones clásicos de cerrar ventana */
+body.dark-mode .btn-win, 
+body.dark-mode .btn-win-mini {
+    color: var(--win-texto);
 }
 
-.v-diseno {
-    bottom: 35px;    
-    right: 1vw; 
-    z-index: 60;
+/* Enlaces con alto contraste verde neón con brillo */
+body.dark-mode .link-volver,
+body.dark-mode .win-link,
+body.dark-mode #link-pag {
+    color: #39ff14 !important; 
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); 
 }
 
-.v-link {
-    bottom: 394px;
-    right: 1vw; 
-    width: 200px;
-    z-index: 58;
+body.dark-mode .link-volver:hover,
+body.dark-mode .win-link:hover,
+body.dark-mode #link-pag:hover {
+    color: #ffffff !important; 
+    text-decoration: underline;
 }
 
-/*responsive */
+/* Resalte del Copyright del Footer */
+body.dark-mode footer .copyright {
+    color: #ffffff !important; 
+    text-shadow: 0 0 4px #00ff00, 0 0 8px rgba(0, 255, 0, 0.6);
+}
+
+/* Personalización de la barra de desplazamiento vertical */
+body.dark-mode .pantalla-contenido {
+    scrollbar-color: #0a630a #111614; /* Firefox */
+}
+
+body.dark-mode .pantalla-contenido::-webkit-scrollbar {
+    width: 12px;
+}
+
+body.dark-mode .pantalla-contenido::-webkit-scrollbar-track {
+    background: #111614;
+    border-left: 1px solid #0b110f;
+}
+
+body.dark-mode .pantalla-contenido::-webkit-scrollbar-thumb {
+    background: #0a630a;
+    border: 2px solid #111614;
+    border-radius: 4px;
+}
+
+body.dark-mode .pantalla-contenido::-webkit-scrollbar-thumb:hover {
+    background: #00ff00;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE MEDIA QUERIES (SIEMPRE AL FINAL DE TODO)
+   ========================================================================== */
 @media (max-width: 1220px) {
     .v-video, .v-ergo, .v-pub1, .v-vista, .v-pub2, .v-diseno, .v-link, .columna-lateral { 
-        display: none !important; 
+        display: none !important;
     } 
 }
 
 @media (max-width: 600px) {
     .barra-navegacion-superior { 
-        width: 94vw; 
+        width: 94vw;
     }
-    /* Achica los botones*/
     .btn-nav {
-        font-size: 1.7vw;    
+        font-size: 1.7vw;
         padding: 3px 1px;
     }
     .nav-contenido {
         flex-wrap: nowrap;       
-        overflow-x: auto;        /* Activa el scroll horizontal si no entran */
-        justify-content: flex-start; /* Alinea los botones al inicio para deslizar */
-        padding-bottom: 9px;     /* Deja un espacio abajo para que no toque el borde */
-        -webkit-overflow-scrolling: touch; /* deslizamiento en celu suave */
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 9px;
+        -webkit-overflow-scrolling: touch;
     }
 }
-
-
-
-
