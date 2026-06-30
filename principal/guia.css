@@ -1,15 +1,13 @@
-/* ==========================================================================
-   1. FUENTES Y VARIABLES (CON MODO OSCURO INTEGRADO)
-   ========================================================================== */
+/* 1. FUENTES Y VARIABLES (CON MODO OSCURO)*/
 :root {
     --win-gris: #b1b1b1;
     --win-blan: #ffffff;
     --win-somb: #808080;
-    --win-azul: #000080;
+    --win-azul: #6a6ae7;
     --font-array: 'Array', sans-serif; 
-    --filtro-tinte: transparent; /* Sin tinte de color en modo claro */
+    --filtro-tinte: transparent; 
     --filtro-brillo: none;
-    --win-fondo-interno: #ffffff; /* Blanco puro original */
+    --win-fondo-interno: #ffffff; 
     
     /* Variables dinámicas para degradés, textos y tablas */
     --win-barra-deg1: #000080;
@@ -21,14 +19,14 @@
 }
 
 body.dark-mode {
-    --win-gris: #1d2522;          /* Gris oscuro con tinte verde para tus ventanas */
+    --win-gris: #1d2522;          /* Gris oscuro para ventanas */
     --win-blan: #3a4743;          /* Bordes brillantes opacos */
-    --win-somb: #0b110f;          /* Sombras profundas */
-    --win-azul: #023002;          /* Cabeceras base en verde oscuro */
-    --win-texto: #00ff00;         /* Texto verde retro estilo terminal */
+    --win-somb: #0b110f;          /* Sombras*/
+    --win-azul: #023002;          /* Cabeceras verde oscuro */
+    --win-texto: #00ff00;         /* Texto verde */
     --filtro-tinte: rgba(12, 48, 12, 0.5); /* Capa verde oscura translúcida sobre el GIF */
     --filtro-brillo: brightness(0.20) contrast(1.20); 
-    --win-fondo-interno: #111614; /* Fondo ultra oscuro para el interior de las ventanas */
+    --win-fondo-interno: #111614; /* Fondo oscuro para el interior de las ventanas */
     
     /* Degradés y bordes nocturnos */
     --win-barra-deg1: #023002;    
@@ -38,9 +36,7 @@ body.dark-mode {
     --win-borde-tabla: #0a630a;   
 }
 
-/* ==========================================================================
-   2. ESTILOS BASE DEL BODY Y CAPA FILTRO
-   ========================================================================== */
+/*2. ESTILOS BASE DEL BODY Y CAPA FILTRO*/
 body {
     background-image: url(../imagenes/fondo.gif);
     background-size: cover;
@@ -56,7 +52,7 @@ body {
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
 }
 
-/* Capa mágica que procesa y oscurece tu GIF de fondo sin quitarlo */
+/* Capa que procesa y oscurece el GIF */
 body::before {
     content: "";
     position: fixed;
@@ -67,7 +63,7 @@ body::before {
     background-color: var(--filtro-tinte);
     backdrop-filter: var(--filtro-brillo);
     -webkit-backdrop-filter: var(--filtro-brillo);
-    pointer-events: none; /* Permite hacer clic en las ventanas sin interferir */
+    pointer-events: none; 
     z-index: -1; /* Se posiciona justo encima del GIF pero DETRÁS de las ventanas */
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
@@ -81,7 +77,7 @@ body::before {
     transition: color 0.3s ease;
 }
 
-/* Aplicar el color variable al fondo interior de tus ventanas chiquitas */
+/* Aplicar el color variable al fondo de las ventanas chiquitas */
 .contenido-mini, 
 .contenido-mini-video, 
 .contenido-mini-ad { 
@@ -89,9 +85,7 @@ body::before {
     transition: background-color 0.3s ease;
 }
 
-/* ==========================================================================
-   3. ESTRUCTURA Y LAYOUT (ESCRITORIO WINDOWS)
-   ========================================================================== */
+/* 3. ESTRUCTURA Y LAYOUT (ESCRITORIO WINDOWS)*/
 .escritorio {
     width: 100vw;
     height: calc(200vh - 640px); 
@@ -178,9 +172,7 @@ body::before {
     z-index: 10; /* Queda en una capa intermedia, bajo el menú */
 }
 
-/* ==========================================================================
-   4. VENTANAS (PRINCIPAL Y MINI VENTANAS)
-   ========================================================================== */
+/*4. VENTANAS (PRINCIPAL Y MINI VENTANAS)*/
 .ventana-principal {
     background: var(--win-gris);
     width: 100%;
@@ -252,7 +244,7 @@ body::before {
 }
 
 .barra-titulo-mini {
-    background: var(--win-azul); /* Vinculado a la variable dinámica */
+    background: var(--win-azul); 
     color: white;
     padding: 2px 6px;
     display: flex;
@@ -301,9 +293,7 @@ body::before {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ==========================================================================
-   5. CONTENIDOS, TEXTOS Y ELEMENTOS INTERNOS
-   ========================================================================== */
+/* 5. CONTENIDOS, TEXTOS Y ELEMENTOS INTERNOS*/
 h1 { 
     font-size: 1.5rem;
     color: var(--win-azul); 
@@ -426,7 +416,7 @@ footer {
     z-index: 1000;
 }
 
-/* Botón con el relieve clásico de Windows 95 */
+/* Botón con el relieve de Windows 95 */
 .btn-retro-sistema {
     background: var(--win-gris);
     color: var(--win-texto);
@@ -451,9 +441,26 @@ body.dark-mode #btn-modo-oscuro {
     border-color: #444 #050505 #050505 #444;
 }
 
-/* ==========================================================================
-   6. CAZA-BLANCOS, ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)
-   ========================================================================== */
+/* Apunta directo a las imágenes que están en las ventanas de publicidad */
+.v-pub1 .contenido-mini img,
+.v-pub2 .contenido-mini img,
+.contenido-mini-ad img {
+    display: block;
+    width: 100%;       
+    height: auto;      /* Mantiene la proporción para que no se vea estirada ni aplastada */
+    margin: 0;         /* Quita cualquier margen que las descentre */
+    padding: 0;        /* Elimina espacios internos */
+}
+
+/* fuerza a que la publicidad se pegue al borde plástico de la ventana */
+.v-pub1 .contenido-mini,
+.v-pub2 .contenido-mini,
+.contenido-mini-ad {
+    padding: 0 !important; 
+    overflow: hidden; /* Evita que la imagen se salga de las esquinas */
+}
+
+/* 6. CAZA-BLANCOS, ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)*/
 body.dark-mode h1, 
 body.dark-mode h2, 
 body.dark-mode h3, 
@@ -464,18 +471,18 @@ body.dark-mode th {
     border-color: var(--win-somb) !important; /* Para los bordes y separadores */
 }
 
-/* Botones de navegación superior legibles */
+/* Botones de navegación superior */
 body.dark-mode .btn-nav {
     color: var(--win-texto) !important;
 }
 
-/* Botones clásicos de cerrar ventana */
+/* Botones  de cerrar ventana */
 body.dark-mode .btn-win, 
 body.dark-mode .btn-win-mini {
     color: var(--win-texto);
 }
 
-/* Enlaces con alto contraste verde neón con brillo */
+/* Enlaces verde neón con brillo */
 body.dark-mode .link-volver,
 body.dark-mode .win-link,
 body.dark-mode #link-pag {
@@ -521,9 +528,7 @@ body.dark-mode .pantalla-contenido::-webkit-scrollbar-thumb:hover {
     background: #00ff00;
 }
 
-/* ==========================================================================
-   7. RESPONSIVE MEDIA QUERIES (SIEMPRE AL FINAL DE TODO)
-   ========================================================================== */
+/* 7. RESPONSIVE MEDIA QUERIES (SIEMPRE AL FINAL DE TODO)*/
 @media (max-width: 1220px) {
     .v-video, .v-ergo, .v-pub1, .v-vista, .v-pub2, .v-diseno, .v-link, .columna-lateral { 
         display: none !important;

@@ -183,6 +183,31 @@ h1 {
     border-top: 1px dashed var(--sombra-windows);
     margin: 15px 0;
 }
+/*alerta retro*/
+.alerta-retro {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 6px;
+    margin: 10px 0;
+    display: none; /* Oculto por defecto */
+    border: 2px solid;
+}
+
+/* Cuando ocurre un error  */
+.alerta-retro.error {
+    display: block;
+    background: #ffdbdb;
+    color: #b00000;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+
+/* Cuando se envía correctamente */
+.alerta-retro.exito {
+    display: block;
+    background: #e1ffe1;
+    color: #006400;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
 
 /* Botones de acción inferiores */
 .contenedor-botones-form {

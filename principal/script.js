@@ -1,9 +1,3 @@
-/**
- * Proyecto Integrador - Programación III
- * Alumna: Furrer Agostina
- * Funcionalidad: Control de Ventanas (Arrastre Universal por Clases Exactas del HTML)
- */
-
 document.addEventListener("DOMContentLoaded", () => {
     configurarBotonesCierre();
     hacerTodasLasVentanasArrastrables();
@@ -32,10 +26,10 @@ function configurarBotonesCierre() {
 }
 
 /**
- * FUNCIÓN 2: Arrastre de Ventanas (Compatible con .barra-titulo y .barra-titulo-mini)
+ * FUNCIÓN 2: Arrastre de Ventanas 
  */
 function hacerTodasLasVentanasArrastrables() {
-    // SELECCIÓN EXACTA: Buscamos tanto la barra de la principal como la de tus asides (.barra-titulo-mini)
+    // SELECCIÓN EXACTA: Buscamos tanto la barra de la principal como la de los asides 
     const cabeceras = document.querySelectorAll(".barra-titulo, .barra-titulo-mini");
 
     cabeceras.forEach(cabecera => {
@@ -47,7 +41,7 @@ function hacerTodasLasVentanasArrastrables() {
             
             e.preventDefault();
 
-            // Detectamos el contenedor correcto según la estructura de tu HTML
+            // Detectamos el contenedor correcto según la estructura del HTML
             const ventana = cabecera.closest(".mini-ventana") || cabecera.closest(".ventana-principal");
             if (!ventana) return;
 
@@ -76,7 +70,7 @@ function hacerTodasLasVentanasArrastrables() {
                 let posX = xAcumulada + deltaX;
                 let posY = yAcumulada + deltaY;
 
-                // Aplicamos el movimiento visual sin alterar las propiedades físicas fijos de CSS
+                // Aplicamos el movimiento visual sin alterar las propiedades de CSS
                 ventana.style.transform = `translate(${posX}px, ${posY}px)`;
 
                 // Guardamos de forma temporal los datos de este movimiento
@@ -92,7 +86,7 @@ function hacerTodasLasVentanasArrastrables() {
                 ventana.dataset.movimientoX = ventana.dataset.tempX || ventana.dataset.movimientoX;
                 ventana.dataset.movimientoY = ventana.dataset.tempY || ventana.dataset.movimientoY;
                 
-                ventana.style.zIndex = "50"; // Devolvemos la ventana a su capa visual normal
+                // ventana.style.zIndex = "50"; // Devolvemos la ventana a su capa visual normal
             }
 
             document.addEventListener("mousemove", arrastrarMouse);
@@ -102,7 +96,7 @@ function hacerTodasLasVentanasArrastrables() {
 }
 
 /**
- * FUNCIÓN 3: Control del Modo Oscuro Retro (Cumpliendo reglas de entrega)
+ * FUNCIÓN 3: Control del Modo Oscuro Retro 
  */
 function configurarModoOscuroRetro() {
     const botonRetro = document.getElementById("btn-modo-oscuro");
