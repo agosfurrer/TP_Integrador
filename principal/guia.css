@@ -20,7 +20,7 @@
 
 body.dark-mode {
     --win-gris: #1d2522;          /* Gris oscuro para ventanas */
-    --win-blan: #3a4743;          /* Bordes brillantes opacos */
+    --win-blan: #3a4743;          /* Bordes */
     --win-somb: #0b110f;          /* Sombras*/
     --win-azul: #023002;          /* Cabeceras verde oscuro */
     --win-texto: #00ff00;         /* Texto verde */
@@ -168,7 +168,7 @@ body::before {
     transform: translate(-50%);
     width: 92vw;
     max-width: 740px; /* Ancho de la ventana de la guía */
-    height: calc(100vh - 120px); /* Mide todo el alto pero resta el navegador y barra de abajo */
+    height: calc(100vh - 120px); 
     z-index: 10; /* Queda en una capa intermedia, bajo el menú */
 }
 
@@ -267,7 +267,6 @@ body::before {
 }
 
 /* Ventana de video */
-
 .video-titulo {
     background: linear-gradient(90deg, var(--win-barra-video1), var(--win-barra-video2)) !important; 
     transition: background 0.3s ease;
@@ -472,7 +471,7 @@ body.dark-mode #btn-modo-oscuro {
     padding: 0;
 }
 
-/* fuerza a que la publicidad se pegue al borde plástico de la ventana */
+/* fuerza a que la publicidad se pegue al borde de la ventana */
 .v-pub1 .contenido-mini,
 .v-pub2 .contenido-mini,
 .contenido-mini-ad {
@@ -537,7 +536,7 @@ body.dark-mode #btn-modo-oscuro {
 }
 
 
-/* 6. CAZA-BLANCOS, ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)*/
+/* 6. ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)*/
 body.dark-mode h1, 
 body.dark-mode h2, 
 body.dark-mode h3, 
@@ -567,10 +566,10 @@ body.dark-mode #input-buscador {
 }
 
 body.dark-mode .tip-titulo {
-    color: #39ff14 !important; /* Verde neón con alto contraste */
+    color: #39ff14 !important; 
 }
 
-/* Enlaces verde neón con brillo */
+/* Enlaces */
 body.dark-mode .link-volver,
 body.dark-mode .win-link,
 body.dark-mode #link-pag {
@@ -616,7 +615,7 @@ body.dark-mode .pantalla-contenido::-webkit-scrollbar-thumb:hover {
     background: #00ff00;
 }
 
-/* 7. RESPONSIVE MEDIA QUERIES (SIEMPRE AL FINAL DE TODO)*/
+/* 7. RESPONSIVE MEDIA QUERIES */
 @media (max-width: 1220px) {
     .v-video, .v-ergo, .v-pub1, .v-vista, .v-pub2, .v-diseno, .v-link, .columna-lateral { 
         display: none !important;

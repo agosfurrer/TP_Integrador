@@ -61,8 +61,15 @@ Página 1: https://hhroses.art/
 Página 2: https://lostlove.neocities.org/ 
 
 -- Tercera parte ---------------------------------------------------------------------------------------------------------
-se realizaron dos scripts, uno para la página principal y el otro para el formulario.
+En esta última etapa del proyecto integrador, se dejó atrás la estructura estática para pasar a la interactividad mediante JavaScript.
 
+.Gestión Dinámica de Ventanas (Sistema de Capas Estilo OS): Para copiar el comportamiento de un sistema operativo clásico como Windows, se desarrolló un controlador de profundidad dinámico que manipula la propiedad `z-index` en tiempo real. Al detectar el evento `mousedown` sobre la barra de título hace que la ventana seleccionada pase automáticamente al frente del grupo y mantenga de forma fija esa prioridad al soltar el mouse (`mouseup`), evitando que vuelva al fondo.
+
+.Motor de Búsqueda en Tiempo Real: Se creó una base de datos local mediante un array de objetos (baseConsejos) que almacena títulos, textos y palabras clave. Utilizando el evento keyup, el script captura y limpia el texto ingresado por el usuario para filtrar los elementos que coinciden. Si encuentra resultados ofrece una respuesta inmediata sin necesidad de recargar la página.
+
+.Validación y Control de Excepciones: Se diseñó una estructura basada en bloques `try...catch` para asegurar la integridad de los datos antes del envío (`submit`). Mediante métodos como `.trim()`, el script verifica los campos obligatorios; si detecta anomalías, interrumpe el flujo lanzando un error con `throw new Error()` que el bloque `catch` captura para mostrarlo en pantalla. Además, el campo "Celular" usa un evento `input` con una expresión regular (`regex`) que remueve en tiempo real cualquier carácter no numérico.
+
+.Modo Oscuro Retro con Persistencia (LocalStorage): Se integró un interruptor de apariencia que alterna entre la paleta gris de Windows y una estética de terminal informática. Para conectar la configuración entre la guía y el formulario, se utilizó la API de `localStorage`. Al cargar el DOM (`DOMContentLoaded`), el script consulta la memoria del navegador e inyecta automáticamente la clase `dark-mode` al `body` si la opción está activa.
 
 # Nombre de la autora
 🎧ྀི Furrer Agostina

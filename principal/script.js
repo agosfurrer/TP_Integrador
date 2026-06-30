@@ -5,7 +5,7 @@ const baseConsejos = [
     { titulo: "Descanso Visual", texto: "Mirá un objeto a 6 metros por 20 segundos cada 20 minutos de código.", palabraClave: "vista" },
     { titulo: "Atajos de Teclado", texto: "Usá Ctrl + F5 para limpiar la caché del navegador al probar tus CSS.", palabraClave: "teclado" },
     { titulo: "Ergonomía de Manos", texto: "Las muñecas deben estar rectas al usar el teclado para evitar el túnel carpiano.", palabraClave: "manos" },
-    { titulo: "Orden en el Código", texto: "Indentá bien tu HTML y CSS para que la Prof. Irina te ponga un 10.", palabraClave: "codigo" }
+    { titulo: "Orden en el Código", texto: "Indentá bien tu HTML y CSS para que no haya problemas dolores de cabeza", palabraClave: "codigo" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -41,7 +41,7 @@ function configurarBotonesCierre() {
         boton.addEventListener("click", (evento) => {
             evento.stopPropagation(); 
 
-            // Corregido para incluir el contenedor central de la ventana principal
+            //incluir el contenedor central de la ventana principal
             const ventanaContenedora = evento.target.closest(".mini-ventana") || evento.target.closest(".contenedor-central");
             if (ventanaContenedora) {
                 ventanaContenedora.style.display = "none";
@@ -54,7 +54,7 @@ function configurarBotonesCierre() {
 /**
  * FUNCIÓN 2: Arrastre de Ventanas
  */
-// 1. Declaramos un contador global de capas para las mini-ventanas (fuera de la función)
+// 1. Declarar un contador global de capas para las mini-ventanas 
 let capasMiniVentanas = 100; 
 
 function hacerTodasLasVentanasArrastrables() {
@@ -69,10 +69,9 @@ function hacerTodasLasVentanasArrastrables() {
 
             const ventana = cabecera.closest(".mini-ventana") || cabecera.closest(".contenedor-central");
             if (!ventana) return;
-
-            // 2. CORRECCIÓN MILIMÉTRICA AQUÍ: 
+ 
             // Si es una mini-ventana común, aumentamos el contador y se lo asignamos.
-            // Esto hace que quede al frente de las demás y SE QUEDE AHÍ incluso al soltar.
+            // Esto hace que quede al frente de las demás y quede ahí incluso al soltar.
             if (ventana.classList.contains("mini-ventana")) {
                 capasMiniVentanas++;
                 ventana.style.zIndex = capasMiniVentanas.toString();
@@ -116,8 +115,6 @@ function hacerTodasLasVentanasArrastrables() {
                 ventana.dataset.movimientoX = ventana.dataset.tempX || ventana.dataset.movimientoX;
                 ventana.dataset.movimientoY = ventana.dataset.tempY || ventana.dataset.movimientoY;
                 
-                // 3. CORRECCIÓN AQUÍ: Eliminamos la línea que reseteaba el zIndex a "2" o "50".
-                // Al no tocar el zIndex en el soltar, la ventana conserva el número alto que adquirió en el mousedown.
             }
 
             document.addEventListener("mousemove", arrastrarMouse);

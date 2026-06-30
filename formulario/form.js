@@ -1,4 +1,3 @@
-// Esperar a que el DOM esté completamente cargado antes de mapear los elementos
 document.addEventListener("DOMContentLoaded", () => {
     
     // Elementos del Modo Oscuro
