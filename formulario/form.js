@@ -87,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
    
     // FUNCIÓN 3: Responsabilidad de manipulación del DOM y renderizado de texto
     function mostrarMensaje(texto, tipo) {
+        cajaAlerta.style.display = "block";
         cajaAlerta.textContent = texto;               // Modifica el texto dinámicamente
         cajaAlerta.className = `alerta-retro ${tipo}`; // Cambia estilos agregando clases
     }

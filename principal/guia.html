@@ -38,24 +38,32 @@
                     </div>
                 </aside>
 
-                <aside class="mini-ventana v-ergo">
-                    <div class="barra-titulo-mini">
-                        <span>Tip_Ergonomia.txt</span>
-                        <span class="btn-win-mini">✕</span>
-                    </div>
-                    <div class="contenido-mini">
-                        <h3>-Tip Rápido-</h3>
-                        <p>✶ Codos a 90 grados: Tus muñecas te lo van a agradecer...</p>
-                    </div>
-                </aside>
+                <div class="mini-ventana v-ergo">
+                  <div class="barra-titulo-mini">
+                      <span>Buscar_Tips.exe</span>
+                     <button class="btn-win-mini">X</button>
+                  </div>
+    
+                   <div class="contenido-mini" id="contenedor-busqueda-tips">
+        
+                      <div class="buscador-bloque-input">
+                          <label for="input-buscador" class="buscador-etiqueta">Término a buscar:</label>
+                         <input type="text" id="input-buscador" placeholder="Escribí ej: monitor, postura...">
+                      </div>
 
+                         <div id="lista-resultados-tips" class="buscador-lista-resultados"></div>
+
+                   </div>
+                </div>
+
+                
                 <aside class="mini-ventana v-pub1">
                     <div class="barra-titulo-mini">
                         <span>.✦ Espacio publicitario ✦.</span>
                         <span class="btn-win-mini">✕</span>
                     </div>
                     <div class="contenido-mini-ad">
-                        <img src="../imagenes/venta.jpg" alt="Anuncio" width="170">
+                        <img src="../imagenes/venta.jpg" alt="Anuncio" >
                     </div>
                 </aside>
             </div>
@@ -78,7 +86,7 @@
                         <span class="btn-win-mini">✕</span>
                     </div>
                     <div class="contenido-mini-ad">
-                        <img src="../imagenes/publicidad.jpg" alt="Anuncio" width="170">
+                        <img src="../imagenes/publicidad.jpg" alt="Anuncio" >
                     </div>
                 </aside>
 
@@ -307,7 +315,7 @@
 
         <div class="contenedor-modo-oscuro">
         <button id="btn-modo-oscuro" class="btn-retro-sistema">Modo Oscuro</button>
-    </div>
+       </div>
     </footer>
 <script src="script.js" defer></script>
 </body>

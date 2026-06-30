@@ -50,6 +50,7 @@ body {
     align-items: center;
     font-family: var(--font-array);
     overflow: hidden; /* Mantiene la pantalla fija sin scroll de navegador */
+    overflow-y: auto;   /* Permite scroll general solo si la pantalla colapsa por completo */
 }
 
 /* Capa que procesa y oscurece el GIF */
@@ -88,7 +89,7 @@ body::before {
 /* 3. ESTRUCTURA Y LAYOUT (ESCRITORIO WINDOWS)*/
 .escritorio {
     width: 100vw;
-    height: calc(200vh - 640px); 
+    height: calc(100vh - 640px); 
     position: relative;
     padding: 52px 40px 4px;
     box-sizing: border-box;
@@ -267,9 +268,6 @@ body::before {
 }
 
 /* Ventana de video */
-.ventana-video {
-    box-shadow: 5px 5px 0px rgba(0,0,0,0.3);
-}
 
 .video-titulo {
     background: linear-gradient(90deg, var(--win-barra-video1), var(--win-barra-video2)) !important; 
@@ -397,6 +395,12 @@ footer {
 .contenido-mini h3 { text-align: center; }
 .contenido-mini p { text-align: left; }
 
+/* Estilos extraídos del HTML para el Buscador de Tips */
+#contenedor-busqueda-tips {
+    padding: 10px;
+    font-size: 13px;
+}
+
 /* Posicionamiento Ventanas Izquierdas */
 .v-video { top: 400px; left: 2vw; width: 240px; z-index: 60; }
 .v-ergo { top: 270px; left: 4.5vw; z-index: 58; }
@@ -452,6 +456,23 @@ body.dark-mode #btn-modo-oscuro {
     padding: 0;        /* Elimina espacios internos */
 }
 
+.contenido-mini-ad {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido-mini-ad img {
+    display: block;
+    width: 100%;       
+    height: auto;      
+    margin: 0;
+    padding: 0;
+}
+
 /* fuerza a que la publicidad se pegue al borde plástico de la ventana */
 .v-pub1 .contenido-mini,
 .v-pub2 .contenido-mini,
@@ -459,6 +480,63 @@ body.dark-mode #btn-modo-oscuro {
     padding: 0 !important; 
     overflow: hidden; /* Evita que la imagen se salga de las esquinas */
 }
+
+/*COMPONENTES DEL CENTRO DE BÚSQUEDA (TIPS) */
+
+/* Bloque contenedor del input */
+.buscador-bloque-input {
+    margin-bottom: 10px;
+}
+
+/* Etiqueta del buscador */
+.buscador-etiqueta {
+    font-size: 11px; 
+    font-weight: bold; 
+    display: block; 
+    margin-bottom: 3px;
+}
+
+/* Input */
+#input-buscador {
+    width: 100%; 
+    font-size: 11px; 
+    padding: 2px; 
+    font-family: var(--font-array); 
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 2px solid;
+    border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
+}
+
+/* Caja interna con scroll para los resultados */
+.buscador-lista-resultados {
+    max-height: 150px; 
+    overflow-y: auto; 
+    font-size: 12px; 
+    border: 2px solid;
+    border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb);
+    background: var(--win-fondo-interno); 
+    padding: 6px;
+}
+
+/* Estilos para los elementos */
+.tip-resultado {
+    margin-bottom: 8px;
+    border-bottom: 1px dashed var(--win-somb);
+    padding-bottom: 4px;
+}
+
+.tip-titulo {
+    color: var(--win-azul);
+    display: block;
+    font-weight: bold;
+}
+
+.tip-vacio {
+    font-style: italic;
+    color: var(--win-somb);
+}
+
 
 /* 6. CAZA-BLANCOS, ENLACES Y SCROLLBARS (SOLO PARA MODO OSCURO)*/
 body.dark-mode h1, 
@@ -480,6 +558,17 @@ body.dark-mode .btn-nav {
 body.dark-mode .btn-win, 
 body.dark-mode .btn-win-mini {
     color: var(--win-texto);
+}
+
+body.dark-mode #input-buscador {
+    background: #111614 !important;
+    color: #00ff00 !important;
+    border: 2px solid !important;
+    border-color: var(--win-somb) var(--win-blan) var(--win-blan) var(--win-somb) !important;
+}
+
+body.dark-mode .tip-titulo {
+    color: #39ff14 !important; /* Verde neón con alto contraste */
 }
 
 /* Enlaces verde neón con brillo */
