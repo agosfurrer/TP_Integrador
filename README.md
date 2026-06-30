@@ -53,7 +53,7 @@ Se diseñó un bloque estático en la base de la pantalla que exhibe la autoría
 ![alt text](<capturas/Captura de pantalla 2026-06-01 123142.png>)
 
 # Tecnologías utilizadas
-El desarrollo de este proyecto integrador se llevó a cabo mediante el uso complementario de dos tecnologías fundamentales: HTML, implementado para la maquetación y definición estructural del sitio, y CSS, aplicado de forma exclusiva para la estética visual y los estilos de la interfaz.
+El desarrollo de este proyecto integrador se llevó a cabo mediante el uso complementario de dos tecnologías fundamentales: HTML, implementado para la maquetación y definición estructural del sitio, y CSS, aplicado de forma exclusiva para la estética visual y los estilos de la interfaz. Por último se utilizó JavaScript para añadirle interactividad y que la página deje de ser estática.
 
 # Páginas de referencia
 Para la web se inspiró en diversos sitios alojados en Neocities.com. Allí se encuentran una gran cantidad de webs tipo "Blogs" de las cuales se estuvo tomando referencia basando el proyecto explicitamente en una de ellas-la cual es la que aparece en la página de guía-, aunque tambien se usó de referencia la segunda página a continuación:
@@ -70,6 +70,13 @@ En esta última etapa del proyecto integrador, se dejó atrás la estructura est
 .Validación y Control de Excepciones: Se diseñó una estructura basada en bloques `try...catch` para asegurar la integridad de los datos antes del envío (`submit`). Mediante métodos como `.trim()`, el script verifica los campos obligatorios; si detecta anomalías, interrumpe el flujo lanzando un error con `throw new Error()` que el bloque `catch` captura para mostrarlo en pantalla. Además, el campo "Celular" usa un evento `input` con una expresión regular (`regex`) que remueve en tiempo real cualquier carácter no numérico.
 
 .Modo Oscuro Retro con Persistencia (LocalStorage): Se integró un interruptor de apariencia que alterna entre la paleta gris de Windows y una estética de terminal informática. Para conectar la configuración entre la guía y el formulario, se utilizó la API de `localStorage`. Al cargar el DOM (`DOMContentLoaded`), el script consulta la memoria del navegador e inyecta automáticamente la clase `dark-mode` al `body` si la opción está activa.
+
+# Capturas
+-- Pantalla principal modo oscuro
+![alt text](<capturas/Captura de pantalla 2026-06-30 201352.png>)
+
+-- Pantalla del formulario en modo oscuro
+![alt text](<capturas/Captura de pantalla 2026-06-30 201451.png>)
 
 # Nombre de la autora
 🎧ྀི Furrer Agostina
